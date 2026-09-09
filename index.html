@@ -931,7 +931,7 @@
       <div class="price-card fade-up">
         <h3>Full-Stack Websites</h3>
         <p class="desc">Complete website from start to finish</p>
-        <div class="price"><small>from</small> $30</div>
+        <div class="price"><small>from</small> $<span class="counter" data-target="30">0</span></div>
         <ul>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -955,7 +955,7 @@
       <div class="price-card featured fade-up">
         <h3>Web & Mobile Apps</h3>
         <p class="desc">Professional and fast applications</p>
-        <div class="price"><small>from</small> $40</div>
+        <div class="price"><small>from</small> $<span class="counter" data-target="40">0</span></div>
         <ul>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -979,7 +979,7 @@
       <div class="price-card fade-up">
         <h3>Bots</h3>
         <p class="desc">Discord / WhatsApp / Telegram</p>
-        <div class="price"><small>from</small> $5</div>
+        <div class="price"><small>from</small> $<span class="counter" data-target="5">0</span></div>
         <ul>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1098,6 +1098,37 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Price counter animation
+    function animateCounter(el) {
+      const target = +el.dataset.target;
+      const duration = 1200;
+      const start = performance.now();
+
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = '1';
+          animateCounter(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
   </script>
 </body>
 </html>
