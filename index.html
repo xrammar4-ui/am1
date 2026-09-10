@@ -28,27 +28,36 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
-      cursor: none; /* نخفي المؤشر العادي */
+      cursor: none;
     }
-    /* المؤشر المخصص */
-    .custom-cursor {
+
+    /* ===== Custom Cursor ===== */
+    .cursor {
       position: fixed;
-      width: 18px;
-      height: 18px;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 99999;
       transform: translate(-2px, -2px);
-      transition: width 0.2s, height 0.2s, background 0.2s;
+      transition: width 0.15s ease, height 0.15s ease;
     }
-    .custom-cursor svg {
+    .cursor svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
     }
-    .custom-cursor.hover {
-      width: 28px;
-      height: 28px;
+    .cursor.hovered {
+      width: 32px;
+      height: 32px;
     }
+    /* على الموبايل نرجع المؤشر العادي */
+    @media (max-width: 700px) {
+      body { cursor: auto; }
+      .cursor { display: none !important; }
+    }
+
     body::before {
       content: '';
       position: fixed;
@@ -100,7 +109,7 @@
       height: 250px;
       background: rgba(255,255,255,0.03);
     }
-    a, button, .nav-link, .footer-link, .btn, .faq-question, .logo {
+    a, button, .nav-link, .footer-link, .btn, .faq-question, .logo, .service-card, .price-card {
       cursor: none;
     }
     a { text-decoration: none; color: inherit; }
@@ -755,17 +764,15 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .bg-light-1, .bg-light-2, .bg-light-3 { opacity: 0.6; }
-      /* على الموبايل نرجع المؤشر العادي */
-      body { cursor: auto; }
-      .custom-cursor { display: none; }
     }
   </style>
 </head>
 <body>
-  <!-- المؤشر المخصص -->
-  <div class="custom-cursor" id="customCursor">
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4L20 12L4 20V14L12 12L4 10V4Z" fill="white" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <path d="M5.5 3.21V20.8c0 .10.0.1.4.35l4.86-4.86 2.72 6.54c.10.0.1.3.55.25l2.18-.91c.22-.09.32-.34.23-.55l-2.72-6.54 6.54-1.18c.25-.05.4-.28.35-.53L6.05 2.86c-.1-.25-.4-.3-.55-.1z" fill="#ffffff"/>
     </svg>
   </div>
 
@@ -1081,27 +1088,27 @@
       <p>Developed By <a href="https://iammar.online" target="_blank" rel="noopener" class="dev-link">AMMaR</a></p>
     </div>
   </footer>
+
   <script>
-    // Custom Cursor
-    const cursor = document.getElementById('customCursor');
+    // ===== Custom Cursor =====
+    const cursor = document.getElementById('cursor');
+
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
 
-    // تكبير المؤشر عند الوقوف على العناصر التفاعلية
-    const hoverElements = document.querySelectorAll('a, button, .nav-link, .footer-link, .btn, .faq-question, .logo, .service-card, .price-card');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    // تكبير المؤشر عند الـ hover
+    const hoverTargets = document.querySelectorAll('a, button, .nav-link, .footer-link, .btn, .faq-question, .logo, .service-card, .price-card');
+    hoverTargets.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
 
-    // Smooth scroll without using #
+    // Smooth scroll
     function goToSection(id) {
       const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     document.querySelectorAll('[data-goto]').forEach(el => {
       el.addEventListener('click', () => {
@@ -1109,19 +1116,20 @@
         document.getElementById('navMenu').classList.remove('open');
       });
     });
+
     // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-    });
-    // Fade-up animation
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+
+    // Fade-up
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
     // Price counter
     function animateCounter(el) {
       const target = +el.dataset.target;
@@ -1145,8 +1153,16 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-    // FAQ accordion
+
+    // FAQ
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
-        const isOpen =
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
