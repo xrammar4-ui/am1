@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AM1 Company — Professional Software Solutions</title>
-  <meta name="description" content="AM1 Company — Full-Stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots">
+  <title>AM2 Company — Professional Software Solutions</title>
+  <meta name="description" content="AM2 Company — Full-Stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     :root {
@@ -746,10 +746,9 @@
   <div class="bg-light bg-light-1"></div>
   <div class="bg-light bg-light-2"></div>
   <div class="bg-light bg-light-3"></div>
-
   <header id="header">
     <div class="nav-container">
-      <span class="logo" data-goto="home">AM1 Company</span>
+      <span class="logo" data-goto="home">AM2 Company</span>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -765,7 +764,6 @@
       </nav>
     </div>
   </header>
-
   <section class="hero" id="home">
     <div class="hero-badges">
       <div class="glass-badge">
@@ -807,7 +805,6 @@
       </div>
     </div>
   </section>
-
   <section id="services">
     <div class="section-header fade-up">
       <div class="section-label">Services</div>
@@ -841,14 +838,13 @@
       </div>
     </div>
   </section>
-
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
         <div class="section-label" style="text-align:left">About Us</div>
         <h2>Built for results that last</h2>
         <p>
-          AM1 Company is a software firm focused on delivering practical, fast solutions. We believe quality doesn’t have to be expensive, and clients deserve real support after delivery.
+          AM2 Company is a software firm focused on delivering practical, fast solutions. We believe quality doesn’t have to be expensive, and clients deserve real support after delivery.
         </p>
         <p>
           We work with modern technologies and pay attention to detail so the result is clean, easy to use, and ready to scale.
@@ -884,7 +880,6 @@
       </div>
     </div>
   </section>
-
   <section id="pricing">
     <div class="section-header fade-up">
       <div class="section-label">Pricing</div>
@@ -970,7 +965,6 @@
       Final price depends on project size & complexity — contact us for an accurate quote
     </p>
   </section>
-
   <section id="faq">
     <div class="section-header fade-up">
       <div class="section-label">FAQ</div>
@@ -1016,11 +1010,10 @@
       </div>
     </div>
   </section>
-
   <footer id="contact">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo" data-goto="home">AM1 Company</div>
+        <div class="logo" data-goto="home">AM2 Company</div>
         <p>
           Software company specializing in full-stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots.
         </p>
@@ -1058,11 +1051,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 AM1 — All rights reserved.</p>
+      <p>© 2025 AM2 — All rights reserved.</p>
       <p>Developed By <a href="https://iammar.online" target="_blank" rel="noopener" class="dev-link">AMMaR</a></p>
     </div>
   </footer>
-
   <script>
     // Smooth scroll without using #
     function goToSection(id) {
@@ -1071,7 +1063,6 @@
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-
     document.querySelectorAll('[data-goto]').forEach(el => {
       el.addEventListener('click', () => {
         goToSection(el.dataset.goto);
@@ -1079,14 +1070,12 @@
         document.getElementById('navMenu').classList.remove('open');
       });
     });
-
     // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
     });
-
     // Fade-up animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1094,7 +1083,6 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
     // Price counter
     function animateCounter(el) {
       const target = +el.dataset.target;
@@ -1118,7 +1106,6 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
