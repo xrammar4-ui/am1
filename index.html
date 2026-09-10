@@ -6,160 +6,155 @@
   <title>AM1 Company — Professional Software Solutions</title>
   <meta name="description" content="AM1 Company — Full-Stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     :root {
-      --primary: #4f46e5;
-      --primary-dark: #3730a3;
-      --primary-light: #eef2ff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --bg: #ffffff;
-      --bg-soft: #f8fafc;
-      --radius: 14px;
-      --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 12px 40px rgba(79, 70, 229, 0.12);
+      --bg: #000000;
+      --bg-card: rgba(20, 20, 30, 0.55);
+      --bg-card-hover: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-hover: rgba(255, 255, 255, 0.25);
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --text-dim: rgba(255, 255, 255, 0.5);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --radius-pill: 40px;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    svg {
-      flex-shrink: 0;
-    }
-    /* ===== Header ===== */
+    a { text-decoration: none; color: inherit; }
+    svg { flex-shrink: 0; }
+
+    /* ===== Navbar (pill style like Astriex) ===== */
     header {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3s;
-    }
-    header.scrolled {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
     }
     .nav-container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0.9rem 1.5rem;
+      pointer-events: auto;
+      width: calc(100% - 40px);
+      max-width: 1100px;
+      background: rgba(10, 10, 15, 0.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      padding: 0.7rem 1.4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
     .logo {
-      display: inline-flex;
-      align-items: center;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      border-radius: 50px;
-      padding: 0.4rem 1rem;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #0f172a;
-      letter-spacing: -0.2px;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-    .logo:hover {
-      background: #e2e8f0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      letter-spacing: -0.3px;
+      background: linear-gradient(120deg, #fff, #b0b0b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 2rem;
+      gap: 0.35rem;
       align-items: center;
     }
     nav a {
       color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-      position: relative;
+      font-weight: 500;
+      font-size: 0.88rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.2s;
     }
-    nav a:hover {
-      color: var(--primary);
+    nav a:hover, nav a.active {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.25s;
-      border-radius: 2px;
+    .nav-cta {
+      background: #fff !important;
+      color: #000 !important;
+      font-weight: 600 !important;
+      padding: 0.5rem 1.1rem !important;
+      border-radius: 24px !important;
     }
-    nav a:hover::after {
-      width: 100%;
+    .nav-cta:hover {
+      background: #eaeef5 !important;
+      transform: scale(1.03);
     }
     .menu-toggle {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      color: var(--text);
+      color: #fff;
       padding: 4px;
     }
+
     /* ===== Hero ===== */
     .hero {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 5.5rem 1.5rem 4.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      position: relative;
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(80,80,120,0.15), transparent);
     }
-    .hero-badge {
+    .hero-badges {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .glass-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background: var(--primary-light);
-      color: var(--primary);
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
+      background: rgba(20,20,30,0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.45rem 1.1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
     }
-    .hero-badge svg {
-      width: 16px;
-      height: 16px;
-    }
+    .glass-badge svg { width: 14px; height: 14px; }
     .hero h1 {
-      font-size: clamp(2.1rem, 5vw, 3.1rem);
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 1.1rem;
-      line-height: 1.25;
-      letter-spacing: -0.6px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.75) 100%);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
+      color: transparent;
     }
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 560px;
+      max-width: 540px;
       margin: 0 auto 2.2rem;
+      line-height: 1.6;
     }
     .hero-btns {
       display: flex;
@@ -170,161 +165,143 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      background: var(--primary);
-      color: #fff;
-      padding: 0.9rem 1.8rem;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1rem;
+      gap: 0.5rem;
+      padding: 0.9rem 1.9rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
       transition: all 0.25s;
       border: none;
       cursor: pointer;
     }
-    .btn svg {
-      width: 18px;
-      height: 18px;
+    .btn-primary {
+      background: #fff;
+      color: #000;
     }
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    .btn-primary:hover {
+      background: #eaeef5;
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px -5px rgba(255,255,255,0.2);
     }
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
+    .btn-secondary {
+      background: rgba(20,20,30,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
     }
-    .btn-outline:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: none;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.55);
+      transform: scale(1.03);
     }
     .hero-stats {
       display: flex;
       justify-content: center;
       gap: 3rem;
-      margin-top: 3.5rem;
+      margin-top: 4rem;
       flex-wrap: wrap;
     }
-    .stat-item {
-      text-align: center;
-    }
+    .stat-item { text-align: center; }
     .stat-item strong {
       display: block;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--primary);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #fff;
     }
     .stat-item span {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      font-size: 0.85rem;
+      color: var(--text-dim);
     }
+
     /* ===== Sections ===== */
     section {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 4.5rem 1.5rem;
+      padding: 5.5rem 1.5rem;
+    }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.9rem;
+      text-align: center;
     }
     .section-header {
       text-align: center;
-      margin-bottom: 2.8rem;
+      margin-bottom: 3rem;
     }
     .section-header h2 {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.6rem;
     }
     .section-header p {
       color: var(--text-muted);
       font-size: 1.05rem;
-    }
-    /* ===== Services ===== */
-    #services {
-      background: var(--bg-soft);
-      max-width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    #services .inner {
-      max-width: 1140px;
+      max-width: 520px;
       margin: 0 auto;
-      padding: 0 1.5rem;
     }
+
+    /* ===== Services — rectangular glass cards ===== */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
     }
     .service-card {
-      background: #fff;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 2rem 1.6rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), #7c3aed);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
     }
     .service-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
       transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: transparent;
-    }
-    .service-card:hover::before {
-      transform: scaleX(1);
     }
     .service-icon {
-      width: 52px;
-      height: 52px;
-      background: var(--primary-light);
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.2rem;
-      transition: background 0.3s;
+      margin-bottom: 1.3rem;
     }
     .service-icon svg {
-      width: 26px;
-      height: 26px;
-      color: var(--primary);
-      transition: color 0.3s;
-    }
-    .service-card:hover .service-icon {
-      background: var(--primary);
-    }
-    .service-card:hover .service-icon svg {
-      color: #fff;
+      width: 22px;
+      height: 22px;
+      color: rgba(255,255,255,0.85);
     }
     .service-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.55rem;
-      color: var(--text);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #fff;
     }
     .service-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.55;
     }
     .service-price {
-      font-weight: 700;
-      color: var(--primary);
+      font-weight: 600;
+      color: #fff;
       font-size: 0.95rem;
     }
+
     /* ===== About ===== */
     .about-grid {
       display: grid;
@@ -333,9 +310,13 @@
       align-items: center;
     }
     .about-text h2 {
-      font-size: 1.9rem;
-      font-weight: 800;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 700;
       margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .about-text p {
       color: var(--text-muted);
@@ -344,7 +325,7 @@
     }
     .about-features {
       list-style: none;
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
       display: grid;
       gap: 0.75rem;
     }
@@ -352,13 +333,15 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      color: var(--text);
+      color: rgba(255,255,255,0.9);
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .about-features li .check {
       width: 24px;
       height: 24px;
-      background: var(--primary-light);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -366,117 +349,116 @@
       flex-shrink: 0;
     }
     .about-features li .check svg {
-      width: 14px;
-      height: 14px;
-      color: var(--primary);
+      width: 13px;
+      height: 13px;
+      color: #fff;
     }
     .about-card {
-      background: linear-gradient(145deg, #4f46e5, #6366f1 50%, #7c3aed);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
-      color: #fff;
+      background: rgba(20,20,30,0.7);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 2.4rem 2rem;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(79, 70, 229, 0.25);
     }
     .about-card::after {
       content: '';
       position: absolute;
-      top: -40%;
-      right: -20%;
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 255, 255, 0.08);
+      top: -30%;
+      right: -15%;
+      width: 180px;
+      height: 180px;
+      background: rgba(255,255,255,0.04);
       border-radius: 50%;
     }
     .about-card h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
+      font-size: 1.4rem;
+      font-weight: 700;
       margin-bottom: 0.8rem;
       position: relative;
       z-index: 1;
     }
     .about-card p {
-      opacity: 0.92;
+      color: var(--text-muted);
       font-size: 0.98rem;
       position: relative;
       z-index: 1;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
-    .about-card .support-badge {
+    .support-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
       padding: 0.5rem 1rem;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       position: relative;
       z-index: 1;
     }
-    .about-card .support-badge svg {
-      width: 18px;
-      height: 18px;
-    }
-    /* ===== Pricing ===== */
+    .support-badge svg { width: 16px; height: 16px; }
+
+    /* ===== Pricing — rectangular cards ===== */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
     }
     .price-card {
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 18px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 2.2rem 1.7rem;
       text-align: center;
       transition: all 0.3s;
       position: relative;
     }
     .price-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
       transform: translateY(-5px);
     }
     .price-card.featured {
-      border: 2px solid var(--primary);
-      background: linear-gradient(180deg, #f5f3ff 0%, #fff 40%);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      background: rgba(30,30,45,0.7);
     }
     .price-card.featured::before {
       content: "Most Popular";
       position: absolute;
-      top: -13px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: #fff;
-      font-size: 0.75rem;
+      background: #fff;
+      color: #000;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.3rem 1rem;
+      padding: 0.28rem 0.9rem;
       border-radius: 20px;
       white-space: nowrap;
     }
     .price-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
     }
     .price-card .desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
+      font-size: 0.85rem;
+      color: var(--text-dim);
       margin-bottom: 1rem;
     }
     .price {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin: 0.6rem 0 0.2rem;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0.5rem 0 0.2rem;
     }
     .price small {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: var(--text-muted);
+      color: var(--text-dim);
     }
     .price-card ul {
       list-style: none;
@@ -485,16 +467,16 @@
     }
     .price-card ul li {
       padding: 0.4rem 0;
-      color: #475569;
-      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
     .price-card ul li svg {
-      width: 16px;
-      height: 16px;
-      color: var(--primary);
+      width: 15px;
+      height: 15px;
+      color: rgba(255,255,255,0.7);
       flex-shrink: 0;
     }
     .price-card .btn {
@@ -504,25 +486,81 @@
     }
     .price-note {
       text-align: center;
-      margin-top: 1.8rem;
-      color: var(--text-muted);
-      font-size: 0.92rem;
+      margin-top: 2rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
     }
-    .price-note svg {
+    .price-note svg { width: 16px; height: 16px; }
+
+    /* ===== FAQ ===== */
+    #faq { padding-bottom: 5rem; }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .faq-item.open {
+      border-color: rgba(255,255,255,0.25);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1.2rem 1.4rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-question svg {
       width: 18px;
       height: 18px;
-      color: var(--primary);
+      transition: transform 0.3s;
+      color: var(--text-muted);
+      flex-shrink: 0;
     }
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding: 0 1.4rem;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 1.4rem 1.3rem;
+    }
+
     /* ===== Footer ===== */
     footer {
-      background: #0f172a;
-      color: #e2e8f0;
+      background: #050508;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
       padding: 3.5rem 1.5rem 1.5rem;
-      margin-top: 1rem;
     }
     .footer-grid {
       max-width: 1140px;
@@ -533,87 +571,68 @@
     }
     .footer-brand .logo {
       margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #fff;
-      display: inline-flex;
-    }
-    .footer-brand .logo:hover {
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: none;
+      display: inline-block;
     }
     .footer-brand p {
-      color: #94a3b8;
-      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
       max-width: 280px;
       margin-bottom: 1.2rem;
-      line-height: 1.7;
+      line-height: 1.65;
     }
     .footer-note {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      background: rgba(79, 70, 229, 0.2);
-      color: #a5b4fc;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.45rem 0.9rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
       border-radius: 8px;
     }
-    .footer-note svg {
-      width: 16px;
-      height: 16px;
-    }
+    .footer-note svg { width: 14px; height: 14px; }
     .footer-col h4 {
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 600;
       color: #fff;
       margin-bottom: 1.1rem;
     }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 0.6rem;
-    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
     .footer-col a {
-      color: #94a3b8;
-      font-size: 0.92rem;
+      color: var(--text-dim);
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
-    .footer-col a:hover {
-      color: #a5b4fc;
-    }
+    .footer-col a:hover { color: #fff; }
     .contact-links a {
       display: flex;
       align-items: center;
       gap: 0.55rem;
-      color: #94a3b8;
-      margin-bottom: 0.7rem;
-      font-size: 0.95rem;
+      color: var(--text-dim);
+      margin-bottom: 0.65rem;
+      font-size: 0.92rem;
       transition: color 0.2s;
     }
-    .contact-links a:hover {
-      color: #a5b4fc;
-    }
+    .contact-links a:hover { color: #fff; }
     .contact-links .icon {
-      width: 34px;
-      height: 34px;
-      background: rgba(255, 255, 255, 0.06);
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .contact-links .icon svg {
-      width: 16px;
-      height: 16px;
-    }
+    .contact-links .icon svg { width: 15px; height: 15px; }
     .footer-bottom {
       max-width: 1140px;
       margin: 2.5rem auto 0;
       padding-top: 1.4rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255,255,255,0.06);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -621,71 +640,57 @@
       gap: 0.8rem;
     }
     .footer-bottom p {
-      color: #64748b;
-      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.82rem;
     }
     .footer-bottom a.dev-link {
-      color: #a5b4fc;
-      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
       transition: color 0.2s;
     }
-    .footer-bottom a.dev-link:hover {
-      color: #c7d2fe;
-    }
+    .footer-bottom a.dev-link:hover { color: #fff; }
+
     /* ===== Animations ===== */
     .fade-up {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     /* ===== Responsive ===== */
     @media (max-width: 960px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .services-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 700px) {
       nav ul {
         display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 10px);
         left: 0;
         right: 0;
-        background: #fff;
+        background: rgba(10,10,15,0.95);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 1.2rem;
-        gap: 0.8rem;
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        padding: 1rem;
+        gap: 0.3rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
       }
-      nav ul.open {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .hero {
-        padding: 3.5rem 1.2rem 3rem;
-      }
-      .hero-stats {
-        gap: 1.8rem;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
+      nav ul.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav-container { position: relative; }
+      .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .hero { padding: 7rem 1.2rem 3.5rem; }
+      .hero-stats { gap: 1.8rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -695,7 +700,7 @@
     <div class="nav-container">
       <a href="#home" class="logo">AM1 Company</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <nav>
         <ul id="navMenu">
@@ -703,26 +708,39 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="nav-cta">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <!-- Hero -->
   <section class="hero" id="home">
-    <div class="hero-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-      Professional Software Solutions
+    <div class="hero-badges">
+      <div class="glass-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Clean Code
+      </div>
+      <div class="glass-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        Fast Delivery
+      </div>
+      <div class="glass-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Clear Pricing
+      </div>
     </div>
-    <h1>Turn Your Ideas Into <span>Digital Reality</span></h1>
+    <h1>Turn Your Ideas Into<br>Digital Reality</h1>
     <p>
       Specialized in full-stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots — high quality with clear pricing.
     </p>
     <div class="hero-btns">
-      <a href="#pricing" class="btn">
+      <a href="#pricing" class="btn btn-primary">
         View Pricing
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-outline">Contact Us</a>
+      <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-secondary">Contact Us</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -739,46 +757,48 @@
       </div>
     </div>
   </section>
+
   <!-- Services -->
   <section id="services">
-    <div class="inner">
-      <div class="section-header fade-up">
-        <h2>Our Services</h2>
-        <p>Complete software solutions tailored to your needs</p>
+    <div class="section-header fade-up">
+      <div class="section-label">Services</div>
+      <h2>What we build</h2>
+      <p>Complete software solutions tailored to your needs</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Full-Stack Websites</h3>
+        <p>Design and development of professional websites from frontend to backend, with databases and admin panels.</p>
+        <div class="service-price">From $30</div>
       </div>
-      <div class="services-grid">
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Full-Stack Websites</h3>
-          <p>Design and development of professional websites from frontend to backend, with databases and admin panels.</p>
-          <div class="service-price">From $30</div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          </div>
-          <h3>Web & Mobile Apps</h3>
-          <p>Modern, fast applications that work on all devices with high performance and excellent user experience.</p>
-          <div class="service-price">From $40</div>
+        <h3>Web & Mobile Apps</h3>
+        <p>Modern, fast applications that work on all devices with high performance and excellent user experience.</p>
+        <div class="service-price">From $40</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-          </div>
-          <h3>Discord / WhatsApp / Telegram Bots</h3>
-          <p>Smart bots for group management, auto-replies, and custom services built to your requirements.</p>
-          <div class="service-price">From $5</div>
-        </div>
+        <h3>Discord / WhatsApp / Telegram Bots</h3>
+        <p>Smart bots for group management, auto-replies, and custom services built to your requirements.</p>
+        <div class="service-price">From $5</div>
       </div>
     </div>
   </section>
+
   <!-- About -->
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
-        <h2>About Us</h2>
+        <div class="section-label" style="text-align:left">About Us</div>
+        <h2>Built for results that last</h2>
         <p>
           AM1 Company is a software firm focused on delivering practical, fast solutions. We believe quality doesn’t have to be expensive, and clients deserve real support after delivery.
         </p>
@@ -816,11 +836,13 @@
       </div>
     </div>
   </section>
+
   <!-- Pricing -->
   <section id="pricing">
     <div class="section-header fade-up">
-      <h2>Pricing</h2>
-      <p>Transparent starting prices — final cost depends on size & complexity</p>
+      <div class="section-label">Pricing</div>
+      <h2>Transparent starting prices</h2>
+      <p>Final cost depends on size & complexity</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card fade-up">
@@ -845,7 +867,7 @@
             One week free support
           </li>
         </ul>
-        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn">Contact Us</a>
+        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-primary">Contact Us</a>
       </div>
       <div class="price-card featured fade-up">
         <h3>Web & Mobile Apps</h3>
@@ -869,7 +891,7 @@
             One week free support
           </li>
         </ul>
-        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn">Contact Us</a>
+        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-primary">Contact Us</a>
       </div>
       <div class="price-card fade-up">
         <h3>Bots</h3>
@@ -893,7 +915,7 @@
             One week free support
           </li>
         </ul>
-        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn">Contact Us</a>
+        <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-primary">Contact Us</a>
       </div>
     </div>
     <p class="price-note fade-up">
@@ -901,10 +923,57 @@
       Final price depends on project size & complexity — contact us for an accurate quote
     </p>
   </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-header fade-up">
+      <div class="section-label">FAQ</div>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know before starting</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-question">
+          How long does a typical project take?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Depending on complexity, most projects take from a few days to 2–4 weeks. We deliver in clear stages and keep you updated.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question">
+          Do you provide support after delivery?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Yes. Every project includes free support and edits for a full week after delivery so everything works exactly as you need.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question">
+          What is included in the starting price?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Starting prices cover the core features listed. Final cost depends on the exact size, features, and complexity of your project.
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-question">
+          How do I get started?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer">
+          Just contact us on Instagram or by email. Tell us what you need and we’ll reply with a clear quote and timeline.
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer id="contact">
     <div class="footer-grid">
-      <!-- Brand -->
       <div class="footer-brand">
         <div class="logo">AM1 Company</div>
         <p>
@@ -915,7 +984,6 @@
           Free support & edits for a week after delivery
         </div>
       </div>
-      <!-- Quick Links -->
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
@@ -923,9 +991,9 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
-      <!-- Contact -->
       <div class="footer-col">
         <h4>Contact</h4>
         <div class="contact-links">
@@ -949,6 +1017,7 @@
       <p>Developed By <a href="https://iammar.online" target="_blank" rel="noopener" class="dev-link">AMMaR</a></p>
     </div>
   </footer>
+
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -958,19 +1027,16 @@
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navMenu.classList.remove('open'));
     });
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    });
+
+    // Fade-up on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    // Price counter animation
+
+    // Price counter
     function animateCounter(el) {
       const target = +el.dataset.target;
       const duration = 1200;
@@ -979,11 +1045,8 @@
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(eased * target);
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        } else {
-          el.textContent = target;
-        }
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
       }
       requestAnimationFrame(update);
     }
@@ -996,6 +1059,16 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
   </script>
 </body>
 </html>
