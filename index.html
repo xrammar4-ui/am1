@@ -18,7 +18,6 @@
       --text-dim: rgba(255, 255, 255, 0.5);
       --radius: 20px;
       --radius-sm: 14px;
-      --radius-pill: 40px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -30,8 +29,6 @@
       overflow-x: hidden;
       position: relative;
     }
-
-    /* ===== Soft white lights in background ===== */
     body::before {
       content: '';
       position: fixed;
@@ -83,17 +80,12 @@
       height: 250px;
       background: rgba(255,255,255,0.03);
     }
-
     a { text-decoration: none; color: inherit; }
     svg { flex-shrink: 0; }
-
-    /* Make sure content stays above lights */
     header, section, footer, .hero {
       position: relative;
       z-index: 1;
     }
-
-    /* ===== Navbar ===== */
     header {
       position: fixed;
       top: 20px;
@@ -127,6 +119,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      cursor: pointer;
     }
     nav ul {
       list-style: none;
@@ -134,15 +127,19 @@
       gap: 0.35rem;
       align-items: center;
     }
-    nav a {
+    nav a, .nav-link {
       color: var(--text-muted);
       font-weight: 500;
       font-size: 0.88rem;
       padding: 0.45rem 0.9rem;
       border-radius: 20px;
       transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
     }
-    nav a:hover, nav a.active {
+    nav a:hover, .nav-link:hover {
       color: #fff;
       background: rgba(255,255,255,0.1);
     }
@@ -165,8 +162,6 @@
       color: #fff;
       padding: 4px;
     }
-
-    /* ===== Hero ===== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -234,6 +229,7 @@
       transition: all 0.25s;
       border: none;
       cursor: pointer;
+      font-family: inherit;
     }
     .btn-primary {
       background: #fff;
@@ -273,8 +269,6 @@
       font-size: 0.85rem;
       color: var(--text-dim);
     }
-
-    /* ===== Sections ===== */
     section {
       max-width: 1140px;
       margin: 0 auto;
@@ -309,8 +303,6 @@
       max-width: 520px;
       margin: 0 auto;
     }
-
-    /* ===== Services ===== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -362,8 +354,6 @@
       color: #fff;
       font-size: 0.95rem;
     }
-
-    /* ===== About ===== */
     .about-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -460,8 +450,6 @@
       z-index: 1;
     }
     .support-badge svg { width: 16px; height: 16px; }
-
-    /* ===== Pricing ===== */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -556,8 +544,6 @@
       gap: 0.4rem;
     }
     .price-note svg { width: 16px; height: 16px; }
-
-    /* ===== FAQ ===== */
     #faq { padding-bottom: 5rem; }
     .faq-list {
       max-width: 760px;
@@ -615,8 +601,6 @@
       max-height: 200px;
       padding: 0 1.4rem 1.3rem;
     }
-
-    /* ===== Footer ===== */
     footer {
       background: #050508;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -633,6 +617,7 @@
     .footer-brand .logo {
       margin-bottom: 1rem;
       display: inline-block;
+      cursor: pointer;
     }
     .footer-brand p {
       color: var(--text-dim);
@@ -662,12 +647,17 @@
     }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.55rem; }
-    .footer-col a {
+    .footer-col a, .footer-link {
       color: var(--text-dim);
       font-size: 0.9rem;
       transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
     }
-    .footer-col a:hover { color: #fff; }
+    .footer-col a:hover, .footer-link:hover { color: #fff; }
     .contact-links a {
       display: flex;
       align-items: center;
@@ -710,8 +700,6 @@
       transition: color 0.2s;
     }
     .footer-bottom a.dev-link:hover { color: #fff; }
-
-    /* ===== Animations ===== */
     .fade-up {
       opacity: 0;
       transform: translateY(28px);
@@ -721,8 +709,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* ===== Responsive ===== */
     @media (max-width: 960px) {
       .services-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -757,32 +743,29 @@
   </style>
 </head>
 <body>
-  <!-- Soft white ambient lights -->
   <div class="bg-light bg-light-1"></div>
   <div class="bg-light bg-light-2"></div>
   <div class="bg-light bg-light-3"></div>
 
-  <!-- Header -->
   <header id="header">
     <div class="nav-container">
-      <a href="#home" class="logo">AM1 Company</a>
+      <span class="logo" data-goto="home">AM1 Company</span>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <nav>
         <ul id="navMenu">
-          <li><a href="home">Home</a></li>
-          <li><a href="services">Services</a></li>
-          <li><a href="about">About</a></li>
-          <li><a href="pricing">Pricing</a></li>
-          <li><a href="faq">FAQ</a></li>
+          <li><button class="nav-link" data-goto="home">Home</button></li>
+          <li><button class="nav-link" data-goto="services">Services</button></li>
+          <li><button class="nav-link" data-goto="about">About</button></li>
+          <li><button class="nav-link" data-goto="pricing">Pricing</button></li>
+          <li><button class="nav-link" data-goto="faq">FAQ</button></li>
           <li><a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="nav-cta">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-badges">
       <div class="glass-badge">
@@ -803,10 +786,10 @@
       Specialized in full-stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots — high quality with clear pricing.
     </p>
     <div class="hero-btns">
-      <a href="pricing" class="btn btn-primary">
+      <button class="btn btn-primary" data-goto="pricing">
         View Pricing
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
+      </button>
       <a href="https://instagram.com/9lilx.8" target="_blank" rel="noopener" class="btn btn-secondary">Contact Us</a>
     </div>
     <div class="hero-stats">
@@ -825,7 +808,6 @@
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services">
     <div class="section-header fade-up">
       <div class="section-label">Services</div>
@@ -860,7 +842,6 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <div class="about-grid">
       <div class="about-text fade-up">
@@ -904,7 +885,6 @@
     </div>
   </section>
 
-  <!-- Pricing -->
   <section id="pricing">
     <div class="section-header fade-up">
       <div class="section-label">Pricing</div>
@@ -991,7 +971,6 @@
     </p>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <div class="section-header fade-up">
       <div class="section-label">FAQ</div>
@@ -1038,11 +1017,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer id="contact">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo">AM1 Company</div>
+        <div class="logo" data-goto="home">AM1 Company</div>
         <p>
           Software company specializing in full-stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots.
         </p>
@@ -1054,11 +1032,11 @@
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="home">Home</a></li>
-          <li><a href="services">Services</a></li>
-          <li><a href="about">About</a></li>
-          <li><a href="pricing">Pricing</a></li>
-          <li><a href="faq">FAQ</a></li>
+          <li><button class="footer-link" data-goto="home">Home</button></li>
+          <li><button class="footer-link" data-goto="services">Services</button></li>
+          <li><button class="footer-link" data-goto="about">About</button></li>
+          <li><button class="footer-link" data-goto="pricing">Pricing</button></li>
+          <li><button class="footer-link" data-goto="faq">FAQ</button></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1086,15 +1064,30 @@
   </footer>
 
   <script>
+    // Smooth scroll without using #
+    function goToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    document.querySelectorAll('[data-goto]').forEach(el => {
+      el.addEventListener('click', () => {
+        goToSection(el.dataset.goto);
+        // close mobile menu if open
+        document.getElementById('navMenu').classList.remove('open');
+      });
+    });
+
+    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
     });
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navMenu.classList.remove('open'));
-    });
 
+    // Fade-up animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1102,6 +1095,7 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+    // Price counter
     function animateCounter(el) {
       const target = +el.dataset.target;
       const duration = 1200;
@@ -1125,6 +1119,7 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
+    // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
