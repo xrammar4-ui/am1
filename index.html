@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AM2 Company — Professional Software Solutions</title>
   <meta name="description" content="AM2 Company — Full-Stack websites, web & mobile apps, and Discord, WhatsApp & Telegram bots">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CM096T6DDR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CM096T6DDR');
+  </script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     :root {
@@ -30,7 +40,6 @@
       position: relative;
       cursor: none;
     }
-
     /* ===== Custom Cursor ===== */
     .cursor {
       position: fixed;
@@ -57,7 +66,6 @@
       body { cursor: auto; }
       .cursor { display: none !important; }
     }
-
     body::before {
       content: '';
       position: fixed;
@@ -768,14 +776,12 @@
   </style>
 </head>
 <body>
-
   <!-- Custom Cursor -->
   <div class="cursor" id="cursor">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M5.5 3.21V20.8c0 .10.0.1.4.35l4.86-4.86 2.72 6.54c.10.0.1.3.55.25l2.18-.91c.22-.09.32-.34.23-.55l-2.72-6.54 6.54-1.18c.25-.05.4-.28.35-.53L6.05 2.86c-.1-.25-.4-.3-.55-.1z" fill="#ffffff"/>
     </svg>
   </div>
-
   <div class="bg-light bg-light-1"></div>
   <div class="bg-light bg-light-2"></div>
   <div class="bg-light bg-light-3"></div>
@@ -1088,23 +1094,19 @@
       <p>Developed By <a href="https://iammar.online" target="_blank" rel="noopener" class="dev-link">AMMaR</a></p>
     </div>
   </footer>
-
   <script>
     // ===== Custom Cursor =====
     const cursor = document.getElementById('cursor');
-
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
-
     // تكبير المؤشر عند الـ hover
     const hoverTargets = document.querySelectorAll('a, button, .nav-link, .footer-link, .btn, .faq-question, .logo, .service-card, .price-card');
     hoverTargets.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
-
     // Smooth scroll
     function goToSection(id) {
       const el = document.getElementById(id);
@@ -1116,12 +1118,10 @@
         document.getElementById('navMenu').classList.remove('open');
       });
     });
-
     // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-
     // Fade-up
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1129,7 +1129,6 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
     // Price counter
     function animateCounter(el) {
       const target = +el.dataset.target;
@@ -1153,7 +1152,6 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-
     // FAQ
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
