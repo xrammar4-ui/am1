@@ -28,6 +28,26 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
+      cursor: none; /* نخفي المؤشر العادي */
+    }
+    /* المؤشر المخصص */
+    .custom-cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-2px, -2px);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+    .custom-cursor svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
+    }
+    .custom-cursor.hover {
+      width: 28px;
+      height: 28px;
     }
     body::before {
       content: '';
@@ -80,6 +100,9 @@
       height: 250px;
       background: rgba(255,255,255,0.03);
     }
+    a, button, .nav-link, .footer-link, .btn, .faq-question, .logo {
+      cursor: none;
+    }
     a { text-decoration: none; color: inherit; }
     svg { flex-shrink: 0; }
     header, section, footer, .hero {
@@ -119,7 +142,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      cursor: pointer;
     }
     nav ul {
       list-style: none;
@@ -134,7 +156,6 @@
       padding: 0.45rem 0.9rem;
       border-radius: 20px;
       transition: all 0.2s;
-      cursor: pointer;
       background: none;
       border: none;
       font-family: inherit;
@@ -158,7 +179,6 @@
       display: none;
       background: none;
       border: none;
-      cursor: pointer;
       color: #fff;
       padding: 4px;
     }
@@ -228,7 +248,6 @@
       font-size: 0.95rem;
       transition: all 0.25s;
       border: none;
-      cursor: pointer;
       font-family: inherit;
     }
     .btn-primary {
@@ -572,7 +591,6 @@
       font-weight: 600;
       padding: 1.2rem 1.4rem;
       text-align: left;
-      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -617,7 +635,6 @@
     .footer-brand .logo {
       margin-bottom: 1rem;
       display: inline-block;
-      cursor: pointer;
     }
     .footer-brand p {
       color: var(--text-dim);
@@ -651,7 +668,6 @@
       color: var(--text-dim);
       font-size: 0.9rem;
       transition: color 0.2s;
-      cursor: pointer;
       background: none;
       border: none;
       font-family: inherit;
@@ -739,10 +755,20 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .bg-light-1, .bg-light-2, .bg-light-3 { opacity: 0.6; }
+      /* على الموبايل نرجع المؤشر العادي */
+      body { cursor: auto; }
+      .custom-cursor { display: none; }
     }
   </style>
 </head>
 <body>
+  <!-- المؤشر المخصص -->
+  <div class="custom-cursor" id="customCursor">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4L20 12L4 20V14L12 12L4 10V4Z" fill="white" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    </svg>
+  </div>
+
   <div class="bg-light bg-light-1"></div>
   <div class="bg-light bg-light-2"></div>
   <div class="bg-light bg-light-3"></div>
@@ -1056,6 +1082,20 @@
     </div>
   </footer>
   <script>
+    // Custom Cursor
+    const cursor = document.getElementById('customCursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // تكبير المؤشر عند الوقوف على العناصر التفاعلية
+    const hoverElements = document.querySelectorAll('a, button, .nav-link, .footer-link, .btn, .faq-question, .logo, .service-card, .price-card');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
     // Smooth scroll without using #
     function goToSection(id) {
       const el = document.getElementById(id);
@@ -1066,7 +1106,6 @@
     document.querySelectorAll('[data-goto]').forEach(el => {
       el.addEventListener('click', () => {
         goToSection(el.dataset.goto);
-        // close mobile menu if open
         document.getElementById('navMenu').classList.remove('open');
       });
     });
@@ -1110,11 +1149,4 @@
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
-    });
-  </script>
-</body>
-</html>
+        const isOpen =
