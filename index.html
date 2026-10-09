@@ -465,11 +465,11 @@
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#architecture">Architecture</a></li>
-      <li><a href="#pricing">Pricing (EGP)</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn btn-ghost">EGP</button>
+      <button class="btn btn-ghost" id="currencyBtn" type="button">EGP</button>
       <button class="btn btn-primary open-contact">Start Project</button>
     </div>
   </nav>
@@ -601,7 +601,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>PostgreSQL / MongoDB database architecture</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>9,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="9,500 EGP" data-usd="$190">9,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Build →</button>
@@ -624,7 +624,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Interactive micro-interactions & user flows</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>3,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="3,500 EGP" data-usd="$70">3,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Build →</button>
@@ -647,7 +647,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Inventory, order & invoice management</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>14,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="14,500 EGP" data-usd="$290">14,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Build →</button>
@@ -670,7 +670,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Automated exams, quizzes & certificates</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>18,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="18,500 EGP" data-usd="$370">18,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Build →</button>
@@ -693,7 +693,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>API integrations with existing tools</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>24,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="24,500 EGP" data-usd="$490">24,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Build →</button>
@@ -716,7 +716,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Clear technical roadmap & cost estimates</li>
         </ul>
         <div class="footer">
-          <div class="price">Starting from<strong>2,500 EGP</strong></div>
+          <div class="price">Starting from<strong class="price-val" data-egp="2,500 EGP" data-usd="$50">2,500 EGP</strong></div>
           <div class="actions">
             <button class="btn btn-ghost open-contact">Details</button>
             <button class="btn btn-dark open-contact">Book →</button>
@@ -850,6 +850,19 @@
     if (!popup.contains(e.target) && e.target !== qcBtn && !qcBtn.contains(e.target)) {
       closePopup();
     }
+  });
+
+  // Currency Toggle
+  let isEGP = true;
+  const currencyBtn = document.getElementById('currencyBtn');
+  const priceEls = document.querySelectorAll('.price-val');
+
+  currencyBtn.addEventListener('click', () => {
+    isEGP = !isEGP;
+    currencyBtn.textContent = isEGP ? 'EGP' : 'US';
+    priceEls.forEach(el => {
+      el.textContent = isEGP ? el.dataset.egp : el.dataset.usd;
+    });
   });
 </script>
 </body>
