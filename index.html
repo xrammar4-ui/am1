@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AM1 DeV — Next-Gen Full-Stack Software House | Bespoke Digital Engineering</title>
+  <meta name="description" content="AM1 DeV is a next-generation full-stack software house specializing in bespoke digital platforms, enterprise systems, high-converting e-commerce, and educational LMS platforms. Precision engineering meets human-centered UI/UX." />
+  <meta name="keywords" content="AM1 DeV, full-stack development, software house, Next.js, Node.js, e-commerce, LMS, custom software, digital engineering, web development, Egypt, Cairo, bespoke platforms, cloud systems, UI/UX design" />
+  <meta name="author" content="AM1 DeV" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <link rel="canonical" href="https://am1.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://am1.dev/" />
+  <meta property="og:title" content="AM1 DeV — Next-Gen Full-Stack Software House" />
+  <meta property="og:description" content="AM1 DeV engineers bespoke digital platforms, enterprise systems, e-commerce stores, and LMS platforms with precision engineering and human-centered UI/UX." />
+  <meta property="og:image" content="am1-robot.png" />
+  <meta property="og:site_name" content="AM1 DeV" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AM1 DeV — Next-Gen Full-Stack Software House" />
+  <meta name="twitter:description" content="Bespoke full-stack engineering. High-concurrency platforms. Human-centered design." />
+  <meta name="twitter:image" content="am1-robot.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"AM1 DeV","url":"https://am1.dev/","logo":"am1-robot.png","description":"Next-gen full-stack software house specializing in bespoke digital platforms, enterprise management systems, high-converting e-commerce stores, and educational LMS platforms.","sameAs":["https://www.tiktok.com/@ammar_mo10","https://www.instagram.com/9lilx.8"],"contactPoint":{"@type":"ContactPoint","contactType":"customer service","url":"https://www.tiktok.com/@ammar_mo10"},"areaServed":"Worldwide","knowsAbout":["Full-Stack Development","Next.js","Node.js","Cloud Architecture","UI/UX Design","E-Commerce","LMS Platforms"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"AM1 DeV","url":"https://am1.dev/"}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --card-hover: #161616;
+      --border: rgba(255,255,255,0.07);
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #e4e4e7;
+      --green: #22c55e;
+      --radius: 20px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 80px;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    .page-shell {
+      width: 100%;
+      max-width: 1280px;
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 40px 100px rgba(0,0,0,0.5);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 36px;
+      font-size: 11px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.6px;
+    }
+    .top-bar .lab { text-transform: uppercase; font-weight: 500; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.3px;
+    }
+    .logo-icon {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, #e4e4e7, #71717a);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: #000;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 500; color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border-radius: 999px;
+      font-size: 13.5px; font-weight: 600;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+    .btn-primary {
+      background: #fff; color: #000;
+    }
+    .btn-primary:hover { background: #e4e4e7; transform: translateY(-1px); }
+    .btn-dark {
+      background: #1c1c1e; color: #fff;
+      border: 1px solid var(--border);
+    }
+    .btn-dark:hover { background: #27272a; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 0.9fr;
+      gap: 28px;
+      padding: 48px 36px 36px;
+      align-items: center;
+      min-height: 640px;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.7px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+    }
+    .badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -1.4px; margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 14.5px; color: var(--muted);
+      max-width: 380px; margin-bottom: 28px; line-height: 1.7;
+    }
+
+    .core-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      max-width: 320px;
+    }
+    .core-card-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 4px;
+    }
+    .core-card h3 { font-size: 17px; font-weight: 700; }
+    .core-card .tag {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .core-card .sub { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; }
+    .core-card ul { list-style: none; margin-bottom: 18px; }
+    .core-card li {
+      font-size: 13px; color: var(--muted); padding: 3px 0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .core-card li svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); }
+
+    .hero-center {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative;
+    }
+    .robot-wrap {
+      position: relative; width: 100%; max-width: 400px;
+    }
+    .robot-wrap img {
+      width: 100%;
+      filter: drop-shadow(0 0 50px rgba(228,228,231,0.12));
+    }
+    .robot-label {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17,17,17,0.92);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 12px; font-weight: 500;
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+      backdrop-filter: blur(10px);
+      animation: floatY 3s ease-in-out infinite;
+    }
+    .robot-label .dot {
+      width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 6px var(--green);
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    .hero-right { display: flex; flex-direction: column; gap: 14px; }
+    .testimonial-card, .feature-card, .stats-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .testimonial-card .avatars {
+      display: flex; align-items: center; margin-bottom: 10px;
+    }
+    .testimonial-card .avatars span {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: #27272a; border: 2px solid var(--card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; margin-left: -7px;
+    }
+    .testimonial-card .avatars span:first-child { margin-left: 0; }
+    .testimonial-card .stars { color: #fbbf24; font-size: 13px; margin-bottom: 8px; }
+    .testimonial-card p {
+      font-size: 12.5px; color: var(--muted); font-style: italic;
+      margin-bottom: 8px; line-height: 1.5;
+    }
+    .testimonial-card .author {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.3px;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .feature-card h4 {
+      font-size: 14px; font-weight: 600; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .feature-card h4 svg { width: 18px; height: 18px; color: var(--accent); }
+    .feature-card p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+    .stats-card { padding: 0; overflow: hidden; }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 18px; border-bottom: 1px solid var(--border); font-size: 12.5px;
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-row .label {
+      display: flex; align-items: center; gap: 8px; color: var(--muted);
+    }
+    .stat-row .label svg { width: 15px; height: 15px; }
+    .stat-row .value { font-weight: 600; }
+
+    .section {
+      padding: 56px 36px;
+      border-top: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 36px; gap: 32px;
+    }
+    .section-header .label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.7px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-header .label::before {
+      content: ''; width: 5px; height: 5px;
+      background: var(--green); border-radius: 50%;
+    }
+    .section-header h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 800; letter-spacing: -0.8px; line-height: 1.15;
+    }
+    .section-header .right {
+      max-width: 340px; font-size: 14px; color: var(--muted); line-height: 1.6;
+    }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .service-card:hover {
+      background: var(--card-hover);
+      border-color: rgba(228,228,231,0.18);
+      transform: translateY(-3px);
+    }
+    .service-card .top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .service-card .icon {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-card .icon svg { width: 20px; height: 20px; color: var(--accent); }
+    .service-card .meta {
+      text-align: right; font-size: 10.5px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600;
+    }
+    .service-card .meta .days { display: block; margin-top: 2px; color: var(--text); }
+    .service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .service-card .desc {
+      font-size: 13px; color: var(--muted); margin-bottom: 14px;
+      line-height: 1.5; flex-grow: 1;
+    }
+    .service-card ul { list-style: none; margin-bottom: 16px; }
+    .service-card li {
+      font-size: 12.5px; color: var(--muted); padding: 2.5px 0;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .service-card li svg { width: 13px; height: 13px; color: var(--green); flex-shrink: 0; }
+    .service-card .footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .service-card .price { font-size: 11px; color: var(--muted); }
+    .service-card .price strong {
+      display: block; font-size: 15px; color: var(--text);
+      font-weight: 700; margin-top: 1px;
+    }
+    .service-card .actions { display: flex; gap: 6px; }
+    .service-card .actions .btn { padding: 7px 12px; font-size: 12.5px; }
+
+    .arch-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .arch-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px; text-align: center;
+    }
+    .arch-card .num {
+      font-size: 30px; font-weight: 800; letter-spacing: -1px;
+      color: var(--accent); margin-bottom: 6px;
+    }
+    .arch-card .title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .arch-card .sub { font-size: 11.5px; color: var(--muted); }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 36px 28px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 32px; margin-bottom: 32px;
+    }
+    .footer-brand p {
+      font-size: 13px; color: var(--muted); max-width: 260px;
+      line-height: 1.6; margin-top: 12px;
+    }
+    .footer-col h5 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 12px; color: var(--muted);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a {
+      font-size: 13px; color: var(--muted); transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 18px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+    }
+
+    .qc-wrap {
+      position: fixed; bottom: 24px; right: 24px; z-index: 300;
+    }
+    .qc-btn {
+      display: flex; align-items: center; gap: 9px;
+      background: #18181b; border: 1px solid var(--border);
+      border-radius: 999px; padding: 11px 18px;
+      font-size: 13.5px; font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+      transition: all 0.2s; cursor: pointer; color: var(--text);
+    }
+    .qc-btn:hover { background: #27272a; transform: translateY(-2px); }
+    .qc-btn .dot {
+      width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; box-shadow: 0 0 7px var(--green);
+    }
+    .contact-popup {
+      position: absolute; bottom: calc(100% + 10px); right: 0;
+      background: #111; border: 1px solid var(--border);
+      border-radius: 14px; padding: 10px; min-width: 210px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.65);
+      opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: all 0.2s ease;
+    }
+    .contact-popup.open {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .contact-popup a {
+      display: flex; align-items: center; gap: 11px;
+      padding: 11px 12px; border-radius: 10px;
+      font-size: 13.5px; font-weight: 500; color: var(--text);
+      transition: background 0.15s;
+    }
+    .contact-popup a:hover { background: rgba(255,255,255,0.05); }
+    .contact-popup a svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .contact-popup a.ig svg { color: #e1306c; }
+    .contact-popup a.tt svg { color: #fff; }
+    .contact-popup .handle { color: var(--muted); font-size: 12px; }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 32px; }
+      .hero-desc { margin: 0 auto 28px; }
+      .core-card { margin: 0 auto; }
+      .hero-right { max-width: 420px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .arch-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      body { padding: 12px 8px 70px; }
+      .page-shell { border-radius: 18px; }
+      .top-bar, .nav, .hero, .section, .footer { padding-left: 18px; padding-right: 18px; }
+      .services-grid, .arch-grid, .footer-grid { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-shell">
+
+  <div class="top-bar">
+    <span>@AM1_DEV</span>
+    <span class="lab">Full-Stack Engineering Lab</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#" class="logo">
+      <div class="logo-icon">A1</div>
+      <span>AM1 DeV</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#pricing">Pricing (EGP)</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost">EGP</button>
+      <button class="btn btn-primary open-contact">Start Project</button>
+    </div>
+  </nav>
+
+  <section class="hero" id="about">
+    <div class="hero-left">
+      <div class="badge">A Higher Standard of Digital Engineering</div>
+      <h1>The next-<br>gen full-stack<br>software house</h1>
+      <p class="hero-desc">
+        AM1 DeV engineers bespoke digital platforms, enterprise management systems, high-converting e-commerce stores, and educational LMS platforms — combining precision engineering with human-centered UI/UX.
+      </p>
+      <div class="core-card">
+        <div class="core-card-header">
+          <h3>AM1 Core</h3>
+          <span class="tag">Agency</span>
+        </div>
+        <div class="sub">Full-Stack Software Lab</div>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Understands your business logic.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Architects scalable cloud databases.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Builds modern responsive web systems.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            With you, from conception to production.
+          </li>
+        </ul>
+        <a href="#services" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Discover Solutions
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-center">
+      <div class="robot-wrap">
+        <img src="am1-robot.png" alt="AM1 Architecture Engine Robot" width="400" height="530" loading="eager" />
+        <div class="robot-label">
+          <span class="dot"></span>
+          AM1 Architecture Engine · Ready
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="testimonial-card">
+        <div class="avatars">
+          <span>SF</span><span>OT</span><span>KZ</span><span>+4</span>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>“Feels like the future of bespoke engineering. AM1 built our entire educational LMS and payment gateway in record time.”</p>
+        <div class="author">Kareem M. · Verified EdTech Founder (Cairo)</div>
+      </div>
+
+      <div class="feature-card">
+        <h4>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Built with high concurrency
+        </h4>
+        <p>Combines modern cloud backends, reactive frontends, and robust caching to ensure your platform handles thousands of simultaneous transactions seamlessly.</p>
+      </div>
+
+      <div class="stats-card">
+        <div class="stat-row">
+          <span class="label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Sprint Pace
+          </span>
+          <span class="value">7 – 21 Days Avg</span>
+        </div>
+        <div class="stat-row">
+          <span class="label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Architecture SLA
+          </span>
+          <span class="value">99.98% Uptime</span>
+        </div>
+        <div class="stat-row">
+          <span class="label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Security Standard
+          </span>
+          <span class="value">Enterprise RBAC & SSL</span>
+        </div>
+        <div class="stat-row">
+          <span class="label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Full-Stack Core
+          </span>
+          <span class="value">Next.js / Node / SQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-header">
+      <div>
+        <div class="label">Core Capabilities</div>
+        <h2>What We Build at AM1 DeV</h2>
+      </div>
+      <div class="right">
+        From single high-converting interfaces to multi-tenant distributed cloud systems. We take full ownership of the software lifecycle.
+      </div>
+    </div>
+
+    <div class="services-grid" id="pricing">
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="meta">Engineering<span class="days">10 – 14 Days</span></div>
+        </div>
+        <h3>Full-Stack Web Applications</h3>
+        <p class="desc">Bespoke, scalable web apps built with Next.js, Node.js, TypeScript, and modern cloud databases.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Reactive Next.js / React frontend</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Scalable Node / Express / Serverless backend</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>PostgreSQL / MongoDB database architecture</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>9,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Build →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="meta">Design<span class="days">5 – 7 Days</span></div>
+        </div>
+        <h3>UI/UX Design & Landing Pages</h3>
+        <p class="desc">Human-centered product design, responsive landing pages, and interactive Figma prototypes.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Comprehensive Figma component library</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Mobile, tablet & desktop responsive layouts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Interactive micro-interactions & user flows</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>3,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Build →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div class="meta">Commerce<span class="days">12 – 16 Days</span></div>
+        </div>
+        <h3>High-Converting E-Commerce</h3>
+        <p class="desc">Custom online stores with Egyptian payment gateways, live inventory, and multi-currency checkouts.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Custom catalog, cart & checkout flow</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Paymob, Fawry & InstaPay integration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Inventory, order & invoice management</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>14,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Build →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="meta">EdTech<span class="days">14 – 20 Days</span></div>
+        </div>
+        <h3>Educational Platforms & LMS</h3>
+        <p class="desc">Scalable learning platforms with protected video streaming, student portals, and automated exams.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Protected video streaming & DRM</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Student portals & progress tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Automated exams, quizzes & certificates</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>18,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Build →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="meta">Enterprise<span class="days">20 – 30 Days</span></div>
+        </div>
+        <h3>Custom Management Systems & ERP</h3>
+        <p class="desc">Tailored enterprise systems for inventory, HR, finance, and multi-branch operations.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Multi-role RBAC & permission systems</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Real-time dashboards & analytics</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>API integrations with existing tools</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>24,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Build →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="top">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <div class="meta">Advisory<span class="days">1 – 2 Days</span></div>
+        </div>
+        <h3>Technical Consultations & Audits</h3>
+        <p class="desc">Architecture reviews, performance audits, security assessments, and roadmap planning.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Full codebase & infrastructure audit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Performance & security recommendations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Clear technical roadmap & cost estimates</li>
+        </ul>
+        <div class="footer">
+          <div class="price">Starting from<strong>2,500 EGP</strong></div>
+          <div class="actions">
+            <button class="btn btn-ghost open-contact">Details</button>
+            <button class="btn btn-dark open-contact">Book →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="architecture">
+    <div class="section-header">
+      <div>
+        <div class="label">Architecture</div>
+        <h2>Built for Scale & Reliability</h2>
+      </div>
+      <div class="right">
+        Enterprise-grade architecture with high concurrency, security, and 99.98% uptime SLA.
+      </div>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="num">99.98%</div>
+        <div class="title">Uptime SLA</div>
+        <div class="sub">Architecture reliability guarantee</div>
+      </div>
+      <div class="arch-card">
+        <div class="num">7–21</div>
+        <div class="title">Sprint Days</div>
+        <div class="sub">Average delivery window</div>
+      </div>
+      <div class="arch-card">
+        <div class="num">∞</div>
+        <div class="title">Concurrency</div>
+        <div class="sub">Thousands of simultaneous users</div>
+      </div>
+      <div class="arch-card">
+        <div class="num">RBAC</div>
+        <div class="title">Enterprise Security</div>
+        <div class="sub">SSL + Role-based access control</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">A1</div>
+          <span>AM1 DeV</span>
+        </a>
+        <p>Bespoke full-stack engineering house building modern web applications, e-commerce stores, LMS platforms, and custom ERP systems.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#services">Full-Stack Web Apps</a></li>
+          <li><a href="#services">UI/UX Design</a></li>
+          <li><a href="#services">E-Commerce Stores</a></li>
+          <li><a href="#services">LMS Platforms</a></li>
+          <li><a href="#services">ERP Systems</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://www.instagram.com/9lilx.8" target="_blank" rel="noopener">Instagram @9lilx.8</a></li>
+          <li><a href="https://www.tiktok.com/@ammar_mo10" target="_blank" rel="noopener">TikTok @ammar_mo10</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AM1 DeV. All rights reserved.</span>
+      <a href="#">Back to Top ↑</a>
+    </div>
+  </footer>
+
+</div>
+
+<div class="qc-wrap">
+  <div class="contact-popup" id="contactPopup">
+    <a href="https://www.instagram.com/9lilx.8" target="_blank" rel="noopener" class="ig">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      <div>
+        <div>Instagram</div>
+        <div class="handle">@9lilx.8</div>
+      </div>
+    </a>
+    <a href="https://www.tiktok.com/@ammar_mo10" target="_blank" rel="noopener" class="tt">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.7a8.2 8.2 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1.35-.15z"/></svg>
+      <div>
+        <div>TikTok</div>
+        <div class="handle">@ammar_mo10</div>
+      </div>
+    </a>
+  </div>
+  <button class="qc-btn" id="qcBtn" type="button">
+    <span class="dot"></span>
+    Quick Contact
+  </button>
+</div>
+
+<script>
+  const popup = document.getElementById('contactPopup');
+  const qcBtn = document.getElementById('qcBtn');
+
+  function openPopup() {
+    popup.classList.add('open');
+  }
+  function closePopup() {
+    popup.classList.remove('open');
+  }
+  function togglePopup() {
+    popup.classList.toggle('open');
+  }
+
+  qcBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePopup();
+  });
+
+  document.querySelectorAll('.open-contact').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openPopup();
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!popup.contains(e.target) && e.target !== qcBtn && !qcBtn.contains(e.target)) {
+      closePopup();
+    }
+  });
+</script>
+</body>
+</html>
