@@ -129,8 +129,37 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
 .warn b{color:#fff;font-weight:700}
 #cur{position:fixed;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border:1.5px solid #fff;border-radius:50%;pointer-events:none;z-index:200;mix-blend-mode:difference;opacity:0;transition:width .3s,height .3s,margin .3s,background .3s,opacity .3s}
 #cur.h{width:64px;height:64px;margin:-32px 0 0 -32px;background:#fff}
-@media(hover:hover) and (pointer:fine){body,a,button,summary,.stack{cursor:none!important}#cur{opacity:1}}
-@media(max-width:640px){.links{display:none}.box{padding:24px 20px}.card{grid-template-columns:40px 1fr;gap:8px 12px;padding-right:44px}html[dir=rtl] .card{padding:36px 8px 36px 44px}.card p{grid-column:2}footer{grid-template-columns:1fr 1fr}.fl{grid-column:1/-1}.nr .btn.sm{display:none}}
+@media(hover:hover) and (pointer:fine){body,a,button,summary,.stack{cursor:none!important}#cur{opacity:1}#qm input,#qm select,#qm textarea{cursor:text!important}#qm select{cursor:pointer!important}}
+/* quote modal */
+#qm{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+#qm.open{opacity:1;visibility:visible}
+.qcard{position:relative;width:min(540px,100%);margin:auto;background:#fbfbfa;color:#0a0a0a;border-radius:32px;padding:38px 32px 28px;transform:translateY(18px) scale(.97);transition:transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#qm.open .qcard{transform:none}
+html[lang=ar] #qm{font-family:Tajawal,"Inter Tight",sans-serif}
+.qx{position:absolute;top:18px;inset-inline-end:20px;width:32px;height:32px;border:0;background:transparent;font-size:22px;line-height:1;color:#333;border-radius:50%;cursor:pointer}
+.qx:hover{background:#eee}
+.qcard h3{font-size:clamp(28px,5vw,38px);font-weight:500;letter-spacing:-.04em;line-height:1.1;margin:0 0 10px;padding-inline-end:24px}
+html[lang=ar] .qcard h3{letter-spacing:0;line-height:1.35}
+.qcard .qsub{color:#6b6b6b;font-size:17px;line-height:1.5;margin-bottom:26px}
+.qrow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qf{display:block;margin-bottom:16px}
+.qf>span{display:block;font-size:15px;font-weight:500;margin-bottom:8px;color:#111}
+.qf input,.qf select,.qf textarea{width:100%;font:400 15px "Inter Tight",system-ui,sans-serif;color:#111;background:#fff;border:1px solid #e1e1e1;border-radius:999px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s}
+html[lang=ar] .qf input,html[lang=ar] .qf select,html[lang=ar] .qf textarea{font-family:Tajawal,sans-serif}
+.qf textarea{border-radius:22px;resize:vertical;min-height:82px;line-height:1.5}
+.qf input:focus,.qf select:focus,.qf textarea:focus{border-color:#0a0a0a;box-shadow:0 0 0 1px #0a0a0a}
+.qf input::placeholder,.qf textarea::placeholder{color:#a3a3a3}
+.qf input.bad{border-color:#dc2626;box-shadow:0 0 0 1px #dc2626}
+#qphone{direction:ltr;text-align:start}
+html[dir=rtl] #qphone{text-align:right}
+.qsend{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#0a0a0a;color:#fff;border:0;border-radius:999px;padding:17px 22px;font:600 17px "Inter Tight",sans-serif;cursor:pointer;margin-top:8px;transition:transform .25s,box-shadow .25s}
+html[lang=ar] .qsend{font-family:Tajawal,sans-serif}
+.qsend:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.qnote{text-align:center;color:#6b6b6b;font-size:13px;margin:16px 0 12px}
+.qdirect{display:flex;align-items:center;justify-content:center;gap:8px;color:#222;font-size:15px}
+.qdirect:hover{text-decoration:underline}
+.qdirect svg{width:16px;height:16px}
+@media(max-width:640px){.links{display:none}.box{padding:24px 20px}.card{grid-template-columns:40px 1fr;gap:8px 12px;padding-right:44px}html[dir=rtl] .card{padding:36px 8px 36px 44px}.card p{grid-column:2}footer{grid-template-columns:1fr 1fr}.fl{grid-column:1/-1}.nr .btn.sm{display:none}.qrow{grid-template-columns:1fr;gap:0}.qcard{padding:34px 20px 22px;border-radius:26px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
 </style>
 </head>
@@ -221,7 +250,7 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
 <div class="cta" id="contact">
   <h3><span data-l="en">Have a product to build or rethink?</span><span data-l="ar">لديك منتج تريد بناءه أو إعادة التفكير فيه؟</span></h3>
   <p><span data-l="en">Tell us about it — we reply within a day</span><span data-l="ar">أخبرنا عنه — نرد خلال يوم</span></p>
-  <a class="btn" href="https://wa.me/201210356435" data-mag><span data-l="en">Get a free quote ↗</span><span data-l="ar">احصل على عرض سعر مجاني ↗</span></a>
+  <a class="btn" href="#" data-quote data-mag><span data-l="en">Get a free quote ↗</span><span data-l="ar">احصل على عرض سعر مجاني ↗</span></a>
 </div>
 
 </main>
@@ -352,11 +381,11 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
 </main>
 
 <footer>
-  <div class="fl"><h2><span data-l="en">Let’s build <em>something</em> great</span><span data-l="ar">لنبنِ <em>شيئًا</em> رائعًا</span></h2><a class="btn" href="https://wa.me/201210356435" data-mag><span data-l="en">Get a free quote ↗</span><span data-l="ar">احصل على عرض سعر مجاني ↗</span></a></div>
+  <div class="fl"><h2><span data-l="en">Let’s build <em>something</em> great</span><span data-l="ar">لنبنِ <em>شيئًا</em> رائعًا</span></h2><a class="btn" href="#" data-quote data-mag><span data-l="en">Get a free quote ↗</span><span data-l="ar">احصل على عرض سعر مجاني ↗</span></a></div>
   <div><h5><span data-l="en">Contact us</span><span data-l="ar">تواصل معنا</span></h5>
     <a href="https://wa.me/201210356435"><span data-l="en">WhatsApp: <bdi>01210356435</bdi></span><span data-l="ar">واتساب: <bdi>01210356435</bdi></span></a>
     <a href="mailto:mcoredigital1@gmail.com">mcoredigital1@gmail.com</a>
-    <a href="https://wa.me/201210356435"><span data-l="en">Get a free quote</span><span data-l="ar">احصل على عرض سعر</span></a></div>
+    <a href="#" data-quote><span data-l="en">Get a free quote</span><span data-l="ar">احصل على عرض سعر</span></a></div>
   <div><h5><span data-l="en">Follow</span><span data-l="ar">تابعنا</span></h5><a href="https://instagram.com/your_username">Instagram</a></div>
   <div><h5><span data-l="en">Legal</span><span data-l="ar">قانوني</span></h5>
     <a href="/en/privacy" data-r="privacy"><span data-l="en">Privacy Policy<span class="thin">سياسة الخصوصية</span></span><span data-l="ar">سياسة الخصوصية<span class="thin" style="font-family:'Inter Tight'">Privacy Policy</span></span></a>
@@ -364,6 +393,24 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
   <div class="copy"><span><span data-l="en">© 2026 MCoRe. All rights reserved</span><span data-l="ar">© 2026 MCoRe. جميع الحقوق محفوظة</span></span><span><span data-l="en">Full-stack software agency</span><span data-l="ar">وكالة برمجيات متكاملة</span></span></div>
 <div class="word"><span>MCoRe</span><b class="r">®</b></div>
 </footer>
+</div>
+
+<!-- QUOTE MODAL -->
+<div id="qm" role="dialog" aria-modal="true" aria-labelledby="qt">
+  <div class="qcard">
+    <button class="qx" id="qx" type="button" aria-label="Close">✕</button>
+    <h3 id="qt"><span data-l="en">Let’s build something great</span><span data-l="ar">لنبنِ شيئًا رائعًا</span></h3>
+    <p class="qsub"><span data-l="en">Tell us your name, WhatsApp number and what you need. We reply within 24 hours.</span><span data-l="ar">أخبرنا باسمك ورقم الواتساب وما تحتاجه. نرد خلال 24 ساعة.</span></p>
+    <div class="qrow">
+      <label class="qf"><span><span data-l="en">Your name</span><span data-l="ar">اسمك</span></span><input id="qname" type="text" autocomplete="name"></label>
+      <label class="qf"><span><span data-l="en">WhatsApp number</span><span data-l="ar">رقم الواتساب</span></span><input id="qphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+20 10 0000 0000"></label>
+    </div>
+    <label class="qf"><span><span data-l="en">What do you need?</span><span data-l="ar">ماذا تحتاج؟</span></span><select id="qtype"></select></label>
+    <label class="qf"><span><span data-l="en">Tell us about the project (optional)</span><span data-l="ar">أخبرنا عن المشروع (اختياري)</span></span><textarea id="qmsg"></textarea></label>
+    <button class="qsend" id="qsend" type="button"><span data-l="en">Send request ↗</span><span data-l="ar">إرسال الطلب ↗</span></button>
+    <p class="qnote"><span data-l="en">Your details are only used to reply to your request.</span><span data-l="ar">تُستخدم بياناتك فقط للرد على طلبك.</span></p>
+    <a class="qdirect" href="https://wa.me/201210356435" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg><span data-l="en">Prefer WhatsApp? Message us directly</span><span data-l="ar">تفضّل واتساب؟ راسلنا مباشرة</span></a>
+  </div>
 </div>
 
 <script>
@@ -386,6 +433,42 @@ document.querySelectorAll('.outline').forEach(ol=>{
   ol.addEventListener('pointermove',e=>{const r=ol.getBoundingClientRect();ol.style.setProperty('--x',e.clientX-r.left+'px');ol.style.setProperty('--y',e.clientY-r.top+'px')});
   ol.addEventListener('pointerleave',()=>{ol.style.removeProperty('--x');ol.style.removeProperty('--y')});
 });
+// quote form (opens WhatsApp with a ready message)
+const WA='201210356435';
+const TYPES=[
+ ['General inquiry','استفسار عام'],['Web App Development','تطوير تطبيقات الويب'],['Mobile Apps','تطبيقات الجوال'],
+ ['UI/UX & Product Design','تصميم الواجهات وتجربة المستخدم'],['Systems & Cloud','الأنظمة والسحابة'],['Product Strategy','استراتيجية المنتج'],['Something else','شيء آخر']];
+const qm=document.getElementById('qm'),qname=document.getElementById('qname'),qphone=document.getElementById('qphone'),qtype=document.getElementById('qtype'),qmsg=document.getElementById('qmsg');
+function qLocalize(){
+  const ar=document.documentElement.lang==='ar',i=ar?1:0,idx=qtype.selectedIndex<0?0:qtype.selectedIndex;
+  qtype.innerHTML='';TYPES.forEach((t,k)=>{const op=document.createElement('option');op.value=k;op.textContent=t[i];qtype.appendChild(op)});
+  qtype.selectedIndex=idx;
+  qname.placeholder=ar?'مثال: أحمد':'e.g. Ahmed';
+  qmsg.placeholder=ar?'الأهداف، الجدول الزمني، روابط، أي شيء مفيد…':'Goals, timeline, links, anything useful…';
+}
+function qOpen(){qLocalize();qm.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>qname.focus(),250)}
+function qClose(){qm.classList.remove('open');document.body.style.overflow=''}
+function qSend(){
+  const name=qname.value.trim(),phone=qphone.value.trim(),ar=document.documentElement.lang==='ar';
+  const okPhone=phone.replace(/\D/g,'').length>=8;
+  qname.classList.toggle('bad',!name);qphone.classList.toggle('bad',!okPhone);
+  if(!name){qname.focus();return}
+  if(!okPhone){qphone.focus();return}
+  const type=TYPES[qtype.value||0][ar?1:0],note=qmsg.value.trim();
+  const text=ar
+   ?['طلب جديد من موقع MCoRe','','الاسم: '+name,'رقم الواتساب: '+phone,'نوع الخدمة: '+type,'تفاصيل المشروع: '+(note||'—')].join('\n')
+   :['New request from the MCoRe website','','Name: '+name,'WhatsApp: '+phone,'Service: '+type,'Project details: '+(note||'—')].join('\n');
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(text),'_blank','noopener');
+  qClose();qname.value=qphone.value=qmsg.value='';qtype.selectedIndex=0;
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest&&e.target.closest('[data-quote]')){e.preventDefault();qOpen()}
+});
+document.getElementById('qx').addEventListener('click',qClose);
+qm.addEventListener('click',e=>{if(e.target===qm)qClose()});
+document.getElementById('qsend').addEventListener('click',qSend);
+[qname,qphone].forEach(el=>{el.addEventListener('input',()=>el.classList.remove('bad'));el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();qSend()}})});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&qm.classList.contains('open'))qClose()});
 // routing: /en , /ar , /en/services , /ar/faq , /en/privacy , /ar/about
 const SEC=['services','clients','faq','contact'],PG=['privacy','about'],ALL=SEC.concat(PG);
 const H=document.documentElement;let lang='en',sec='';
@@ -404,6 +487,7 @@ function render(smooth){
   ['home','privacy','about'].forEach(i=>document.getElementById(i).hidden=i!==pg);
   if(pg==='home'&&sec)document.getElementById(sec).scrollIntoView({behavior:smooth?'smooth':'instant'});
   else window.scrollTo({top:0,behavior:'instant'});
+  qLocalize();
 }
 function go(l,s){lang=l;sec=s;history.pushState(null,'','/'+l+(s?'/'+s:''));render(true)}
 document.addEventListener('click',e=>{
