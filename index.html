@@ -159,6 +159,24 @@ html[lang=ar] .qsend{font-family:Tajawal,sans-serif}
 .qdirect{display:flex;align-items:center;justify-content:center;gap:8px;color:#222;font-size:15px}
 .qdirect:hover{text-decoration:underline}
 .qdirect svg{width:16px;height:16px}
+/* mobile bottom nav */
+#mnav{display:none}
+@media(max-width:640px){
+body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+#mnav{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;justify-content:space-around;align-items:flex-start;height:68px;padding:10px 6px 0;background:rgba(14,14,14,.88);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid #262626;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+#mnav a{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#fff;opacity:.62;transition:opacity .3s,transform .3s;-webkit-tap-highlight-color:transparent}
+#mnav a svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#mnav a i{font-style:normal;font-size:11px;font-weight:600;line-height:1;opacity:0;transform:translateY(-2px);transition:opacity .3s,transform .3s;white-space:nowrap}
+#mnav a.on{opacity:1}
+#mnav a.on i{opacity:1;transform:none}
+#mnav a.on::after{content:"";position:absolute;bottom:-9px;width:34px;height:3px;border-radius:3px;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.7)}
+#mnav a:active{transform:scale(.9)}
+}
+@media(max-width:640px){
+nav{width:auto;left:auto;right:16px;transform:none;padding:0;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;border-radius:0}
+html[dir=rtl] nav{padding:0;right:auto;left:16px}
+nav .logo,nav .links,nav .nr .btn{display:none}
+}
 @media(max-width:640px){.links{display:none}.box{padding:24px 20px}.card{grid-template-columns:40px 1fr;gap:8px 12px;padding-right:44px}html[dir=rtl] .card{padding:36px 8px 36px 44px}.card p{grid-column:2}footer{grid-template-columns:1fr 1fr}.fl{grid-column:1/-1}.nr .btn.sm{display:none}.qrow{grid-template-columns:1fr;gap:0}.qcard{padding:34px 20px 22px;border-radius:26px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
 </style>
@@ -182,6 +200,13 @@ html[lang=ar] .qsend{font-family:Tajawal,sans-serif}
     <a href="/en/contact" data-r="contact" class="btn sm" data-mag><span data-l="en">Contact us ↗</span><span data-l="ar">تواصل معنا ↗</span></a>
   </div>
 </nav>
+<div id="mnav" aria-label="Sections">
+  <a href="/en" data-r="" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><i><span data-l="en">Home</span><span data-l="ar">الرئيسية</span></i></a>
+  <a href="/en/services" data-r="services" aria-label="Services"><svg viewBox="0 0 24 24"><path d="M12 2.5L3 7.5l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/></svg><i><span data-l="en">Services</span><span data-l="ar">الخدمات</span></i></a>
+  <a href="/en/clients" data-r="clients" aria-label="Clients"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg><i><span data-l="en">Clients</span><span data-l="ar">العملاء</span></i></a>
+  <a href="/en/faq" data-r="faq" aria-label="FAQ"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg><i><span data-l="en">FAQ</span><span data-l="ar">الأسئلة</span></i></a>
+  <a href="/en/contact" data-r="contact" aria-label="Contact"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg><i><span data-l="en">Contact</span><span data-l="ar">تواصل</span></i></a>
+</div>
 
 <main id="home">
 
@@ -488,6 +513,7 @@ function render(smooth){
   if(pg==='home'&&sec)document.getElementById(sec).scrollIntoView({behavior:smooth?'smooth':'instant'});
   else window.scrollTo({top:0,behavior:'instant'});
   qLocalize();
+  setTimeout(mnSet,60);
 }
 function go(l,s){lang=l;sec=s;history.pushState(null,'','/'+l+(s?'/'+s:''));render(true)}
 document.addEventListener('click',e=>{
@@ -498,6 +524,19 @@ document.addEventListener('click',e=>{
 document.getElementById('lang').addEventListener('click',()=>go(lang==='en'?'ar':'en',sec));
 addEventListener('popstate',()=>{read();render(false)});
 read();render(false);
+// mobile nav active state
+const MN=[...document.querySelectorAll('#mnav a')];
+function mnSet(){
+  let cur='';
+  if(PG.includes(sec))cur='';
+  else{
+    cur='';
+    ['services','clients','faq','contact'].forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=innerHeight*.45)cur=id});
+  }
+  const home=!PG.includes(sec)&&cur==='';
+  MN.forEach(a=>a.classList.toggle('on',a.dataset.r===''?home:a.dataset.r===cur||(PG.includes(sec)&&false)));
+}
+addEventListener('scroll',mnSet,{passive:true});addEventListener('resize',mnSet);
 // cursor
 const cur=document.getElementById('cur');let mx=-100,my=-100,cx=-100,cy=-100;
 addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;cur.classList.toggle('h',!!(e.target.closest&&e.target.closest('a,button,summary,.stack,[data-mag]')))});
