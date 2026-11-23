@@ -113,9 +113,7 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
 .pg{max-width:900px;margin:0 auto;padding:150px 20px 20px}
 .outline{position:relative;display:block;text-align:center;font-size:clamp(56px,14vw,150px);font-weight:500;letter-spacing:-.04em;line-height:1.1;color:transparent;-webkit-text-stroke:1px #fff;user-select:none;font-family:"Inter Tight",sans-serif}
 .outline::after{content:attr(data-t);position:absolute;inset:0;color:#fff;-webkit-text-stroke:0;-webkit-mask-image:radial-gradient(circle 80px at var(--x,-999px) var(--y,-999px),#000 25%,transparent 100%);mask-image:radial-gradient(circle 80px at var(--x,-999px) var(--y,-999px),#000 25%,transparent 100%)}
-.abt{text-align:center;font-size:clamp(56px,14vw,150px);font-weight:500;letter-spacing:-.04em;line-height:1.15;user-select:none}
-.abt .o{color:transparent;-webkit-text-stroke:1px #fff}
-.abt .gl{display:inline-block;color:transparent;background:linear-gradient(180deg,rgba(224,242,254,.95) 0%,rgba(96,165,250,.55) 55%,rgba(37,99,235,.3) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1.5px rgba(147,197,253,.85);filter:drop-shadow(0 0 22px rgba(59,130,246,.55))}
+.outline[data-l=ar]{font-family:Tajawal,sans-serif;line-height:1.35}
 .box{margin-top:50px;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:36px 40px}
 .box .top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.14)}
 .box h5{font-weight:500;font-size:15px;margin-bottom:10px}
@@ -325,8 +323,8 @@ footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-siz
 
 <!-- ABOUT -->
 <main id="about" class="pg" hidden>
-<h1 class="abt" data-l="en"><span class="o">About</span> <span class="gl">Us</span></h1>
-<h1 class="abt" data-l="ar"><span class="o">من</span> <span class="gl">نحن</span></h1>
+<h1 class="outline" data-l="en" data-t="About Us">About Us</h1>
+<h1 class="outline" data-l="ar" data-t="من نحن">من نحن</h1>
 
 <div class="box" data-l="en">
 <h4 class="big">Building the Future Through Technology</h4>
@@ -384,9 +382,10 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
   const f=t=>{s=s||t;const p=Math.min((t-s)/1400,1);e.target.textContent=Math.round(n*(1-Math.pow(1-p,3)))+'+';if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
 document.querySelectorAll('[data-n]').forEach(el=>io.observe(el));
 // outline hover (privacy)
-const ol=document.querySelector('.outline');
-ol.addEventListener('pointermove',e=>{const r=ol.getBoundingClientRect();ol.style.setProperty('--x',e.clientX-r.left+'px');ol.style.setProperty('--y',e.clientY-r.top+'px')});
-ol.addEventListener('pointerleave',()=>{ol.style.removeProperty('--x');ol.style.removeProperty('--y')});
+document.querySelectorAll('.outline').forEach(ol=>{
+  ol.addEventListener('pointermove',e=>{const r=ol.getBoundingClientRect();ol.style.setProperty('--x',e.clientX-r.left+'px');ol.style.setProperty('--y',e.clientY-r.top+'px')});
+  ol.addEventListener('pointerleave',()=>{ol.style.removeProperty('--x');ol.style.removeProperty('--y')});
+});
 // routing: /en , /ar , /en/services , /ar/faq , /en/privacy , /ar/about
 const SEC=['services','clients','faq','contact'],PG=['privacy','about'],ALL=SEC.concat(PG);
 const H=document.documentElement;let lang='en',sec='';
