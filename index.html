@@ -3,16 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MCoRe — Full-Stack Software Agency</title>
+<title>Mutqin — Full-Stack Software Agency</title>
 <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700&family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--ink:#f5f5f5;--mut:#9a9a9a;--line:#222;--a1:#6366f1;--a2:#06b6d4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#000;--ink:#f5f5f5;--mut:#9a9a9a;--line:#222;--a1:#10b981;--a2:#5eead4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:var(--bg);color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 em{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.m{color:var(--a1)}
+#intro span.m,.word span.m{background:none;-webkit-text-fill-color:var(--a1);color:var(--a1)}
+.outline .m{-webkit-text-stroke-color:var(--a1)}
 /* language switching */
 html[lang=en] [data-l=ar],html[lang=ar] [data-l=en]{display:none!important}
 [data-l=ar]{font-family:Tajawal,"Inter Tight",sans-serif;letter-spacing:0!important}
@@ -36,12 +39,12 @@ html[dir=rtl] nav{padding:12px 22px 12px 16px}
 .lang:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.07));border-color:rgba(255,255,255,.4)}
 .lang svg{width:18px;height:18px;flex:none}
 .btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#000;padding:12px 22px;border-radius:999px;font-weight:500;font-size:15px;border:0;cursor:pointer;will-change:transform;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
-.btn:hover{box-shadow:0 8px 24px rgba(99,102,241,.35)}
+.btn:hover{box-shadow:0 8px 24px rgba(16,185,129,.35)}
 .btn.sm{padding:10px 18px}
 section{max-width:1080px;margin:0 auto;padding:90px 20px}
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:130px;position:relative}
-.hero:before{content:"";position:absolute;width:520px;height:520px;top:18%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(99,102,241,.12),rgba(6,182,212,.06) 45%,transparent 70%);filter:blur(30px);z-index:-1}
+.hero:before{content:"";position:absolute;width:520px;height:520px;top:18%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(16,185,129,.12),rgba(94,234,212,.06) 45%,transparent 70%);filter:blur(30px);z-index:-1}
 .hero h2{font-size:clamp(44px,8.4vw,104px);font-weight:300;letter-spacing:-.045em;line-height:1.02;max-width:980px}
 html[lang=ar] .hero h2{line-height:1.25}
 .hero h2 em{font-size:1.08em;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
@@ -52,7 +55,7 @@ h3.t{font-size:clamp(30px,4.5vw,52px);font-weight:400;letter-spacing:-.035em;mar
 /* services */
 .grid{display:block;margin-top:40px;border-top:1px solid #222}
 .card{position:relative;display:grid;grid-template-columns:70px 1fr 1.1fr;align-items:center;gap:24px;background:transparent;border:0;border-bottom:1px solid #222;border-radius:0;padding:36px 56px 36px 8px;overflow:hidden}
-.card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(99,102,241,.14),rgba(6,182,212,.06),transparent);transform:translateX(-101%);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,185,129,.14),rgba(94,234,212,.06),transparent);transform:translateX(-101%);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .card>*{position:relative}
 .card::after{content:"↗";position:absolute;right:12px;top:50%;margin-top:-14px;font-size:24px;color:var(--mut);transition:transform .4s,color .4s}
 .card:hover::before{transform:none}
@@ -62,7 +65,7 @@ h3.t{font-size:clamp(30px,4.5vw,52px);font-weight:400;letter-spacing:-.035em;mar
 .card:hover h4{transform:translateX(12px)}
 .card p{color:var(--mut);line-height:1.55;font-size:15px}
 html[dir=rtl] .card{padding:36px 8px 36px 56px}
-html[dir=rtl] .card::before{transform:translateX(101%);background:linear-gradient(270deg,rgba(99,102,241,.14),rgba(6,182,212,.06),transparent)}
+html[dir=rtl] .card::before{transform:translateX(101%);background:linear-gradient(270deg,rgba(16,185,129,.14),rgba(94,234,212,.06),transparent)}
 html[dir=rtl] .card:hover::before{transform:none}
 html[dir=rtl] .card::after{right:auto;left:12px;content:"↖"}
 html[dir=rtl] .card:hover::after{transform:translate(-4px,-4px)}
@@ -88,13 +91,13 @@ details p{color:var(--mut);margin:0;padding-top:12px;line-height:1.6;max-width:6
 details.closing summary::after{transform:none}
 /* cta */
 .cta{background:#0d0d0d;border:1px solid #222;color:#fff;border-radius:36px;text-align:center;padding:80px 24px;max-width:1040px;margin-inline:auto;position:relative;overflow:hidden}
-.cta:before{content:"";position:absolute;inset:auto -10% -60% -10%;height:70%;background:radial-gradient(ellipse,rgba(99,102,241,.45),rgba(6,182,212,.2) 50%,transparent 70%);filter:blur(30px)}
+.cta:before{content:"";position:absolute;inset:auto -10% -60% -10%;height:70%;background:radial-gradient(ellipse,rgba(16,185,129,.45),rgba(94,234,212,.2) 50%,transparent 70%);filter:blur(30px)}
 .cta>*{position:relative}
 .cta h3{font-size:clamp(32px,5vw,58px);font-weight:300;letter-spacing:-.04em;margin-bottom:14px}
 .cta p{color:#aaa;margin-bottom:28px}
 .cta .btn{background:#fff;color:#000}
 footer{position:relative;max-width:1180px;margin:90px auto 0;padding:80px 24px 0;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
-footer::before{content:"";position:absolute;top:0;left:50%;width:100vw;height:4px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#2b3a8f 50%,transparent)}
+footer::before{content:"";position:absolute;top:0;left:50%;width:100vw;height:4px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,#0f5f46 50%,transparent)}
 .fl h2{font-size:clamp(42px,6.2vw,84px);font-weight:300;letter-spacing:-.045em;line-height:1.02}
 html[lang=ar] .fl h2{line-height:1.25}
 .fl h2 em{font-size:1.1em;padding-right:.06em}
@@ -102,7 +105,7 @@ footer .fl .btn{display:inline-flex;margin:36px 0 0;background:transparent;color
 footer .fl .btn:hover{color:#fff;border-color:#555}
 .word{grid-column:1/-1;text-align:center;line-height:.8;font-size:clamp(90px,25vw,330px);font-weight:700;letter-spacing:-.05em;padding:10px 0 110px;user-select:none;font-family:"Inter Tight",sans-serif;direction:ltr}
 .word{position:relative;isolation:isolate;overflow:hidden}
-.word::before{content:"";position:absolute;z-index:-1;left:-30%;right:-30%;top:66%;height:700px;border-radius:50%;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.4),rgba(255,255,255,.14) 22%,transparent 55%);box-shadow:inset 0 3px 6px rgba(255,255,255,.6)}
+.word::before{content:"";position:absolute;z-index:-1;left:-30%;right:-30%;top:66%;height:700px;border-radius:50%;background:radial-gradient(ellipse at 50% 0%,rgba(16,185,129,.45),rgba(16,185,129,.16) 22%,transparent 55%);box-shadow:inset 0 3px 6px rgba(94,234,212,.7)}
 .word span{background:linear-gradient(180deg,#fff 10%,#8f8f8f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .word .r{font-size:.1em;font-weight:400;letter-spacing:0;margin-left:.12em;color:rgba(255,255,255,.7)}
 footer h5{font-weight:400;color:var(--mut);margin-bottom:16px}
@@ -183,10 +186,10 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 </head>
 <body>
 <div id="cur"></div>
-<div id="intro"><h1>M<span>Co</span>Re</h1></div>
+<div id="intro"><h1><span class="m">M</span>u<span>tq</span>in</h1></div>
 <div class="page" id="page">
 <nav>
-  <a href="/en" data-r="" class="logo">MCoRe<i>.</i></a>
+  <a href="/en" data-r="" class="logo">Mutqin<i>.</i></a>
   <div class="links">
     <a href="/en/services" data-r="services"><span data-l="en">Services</span><span data-l="ar">الخدمات</span></a>
     <a href="/en/clients" data-r="clients"><span data-l="en">Clients</span><span data-l="ar">العملاء</span></a>
@@ -216,8 +219,8 @@ nav .logo,nav .links,nav .nr .btn{display:none}
     <span data-l="ar">هندسة برمجيات <em>متكاملة</em> لأي منتج رقمي</span>
   </h2>
   <p>
-    <span data-l="en">MCoRe is a full-stack software agency crafting bespoke web experiences, mobile apps and digital products — in Arabic, English and every language your users speak</span>
-    <span data-l="ar">MCoRe وكالة برمجيات متكاملة تصمم تجارب ويب مخصصة وتطبيقات جوال ومنتجات رقمية — بالعربية والإنجليزية وبكل لغة يتحدثها مستخدموك</span>
+    <span data-l="en">Mutqin is a full-stack software agency crafting bespoke web experiences, mobile apps and digital products — in Arabic, English and every language your users speak</span>
+    <span data-l="ar">Mutqin وكالة برمجيات متكاملة تصمم تجارب ويب مخصصة وتطبيقات جوال ومنتجات رقمية — بالعربية والإنجليزية وبكل لغة يتحدثها مستخدموك</span>
   </p>
   <a href="/en/contact" data-r="contact" class="btn" data-mag><span data-l="en">Start a project</span><span data-l="ar">ابدأ مشروعك</span></a>
 </section>
@@ -282,7 +285,7 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 
 <!-- PRIVACY -->
 <main id="privacy" class="pg" hidden>
-<span class="outline" data-t="MCoRe">MCoRe</span>
+<span class="outline" data-t="Mutqin">Mutqin</span>
 
 <div class="box" data-l="en">
 <div class="top">
@@ -291,9 +294,9 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 <div><h5>Last updated</h5><span>November 2026</span></div>
 </div>
 <h4>General Terms</h4>
-<p>These terms apply to all services provided by MCoRe, whether website development, mobile apps, systems and cloud solutions, or UI/UX design. By contacting us or requesting any service, you explicitly agree to everything stated on this page</p>
+<p>These terms apply to all services provided by Mutqin, whether website development, mobile apps, systems and cloud solutions, or UI/UX design. By contacting us or requesting any service, you explicitly agree to everything stated on this page</p>
 <p>The client must be an adult with full legal capacity to contract, or a representative of an entity with that authority. Any information provided by the client must be true and accurate, and the client bears responsibility for any harm resulting from incorrect data</p>
-<p>By using MCoRe's services or ordering any software product from us, you agree to these terms and policies in full. We work transparently, and every agreement is documented in writing before work begins</p>
+<p>By using Mutqin's services or ordering any software product from us, you agree to these terms and policies in full. We work transparently, and every agreement is documented in writing before work begins</p>
 <div class="warn"><b>Very important notice:</b> Please read these terms carefully before starting any project. Approving a quote or paying a deposit is an explicit acknowledgment that you agree to all terms stated here. If you do not agree with any clause, please do not proceed with the order</div>
 <h4>Order Rules</h4>
 <p>The ordering process goes through several stages: initial contact and idea review, then a quote and timeline, then the client's written approval and payment of the deposit, after which work actually begins. An order is not confirmed until these steps are completed</p>
@@ -336,9 +339,9 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 <div><h5>آخر تحديث</h5><span>نوفمبر 2026</span></div>
 </div>
 <h4>الشروط العامة</h4>
-<p>تسري هذه الشروط على جميع الخدمات التي تقدمها MCoRe، سواء كانت تطوير مواقع، أو تطبيقات جوال، أو أنظمة وحلولًا سحابية، أو تصميم واجهات وتجربة مستخدم. ويُعد تواصلك معنا أو طلبك لأي خدمة موافقة صريحة على كل ما ورد في هذه الصفحة</p>
+<p>تسري هذه الشروط على جميع الخدمات التي تقدمها Mutqin، سواء كانت تطوير مواقع، أو تطبيقات جوال، أو أنظمة وحلولًا سحابية، أو تصميم واجهات وتجربة مستخدم. ويُعد تواصلك معنا أو طلبك لأي خدمة موافقة صريحة على كل ما ورد في هذه الصفحة</p>
 <p>يجب أن يكون العميل بالغًا وله الأهلية القانونية الكاملة للتعاقد، أو ممثلًا عن جهة لديها هذه الصلاحية. وأي معلومات يقدمها العميل يجب أن تكون صحيحة ودقيقة، ويتحمل مسؤولية أي ضرر ينتج عن بيانات خاطئة</p>
-<p>باستخدامك لخدمات MCoRe أو طلبك لأي منتج برمجي منّا، فأنت توافق على هذه الشروط والسياسات كاملة. نحن نعمل بشفافية، وكل اتفاق يُوثَّق كتابيًا قبل بدء التنفيذ</p>
+<p>باستخدامك لخدمات Mutqin أو طلبك لأي منتج برمجي منّا، فأنت توافق على هذه الشروط والسياسات كاملة. نحن نعمل بشفافية، وكل اتفاق يُوثَّق كتابيًا قبل بدء التنفيذ</p>
 <div class="warn"><b>تنبيه هام جدًا:</b> يُرجى قراءة هذه الشروط بعناية قبل البدء في أي مشروع. بمجرد الموافقة على عرض السعر أو دفع العربون، يُعد ذلك إقرارًا صريحًا بالموافقة على جميع البنود الواردة هنا. إذا لم توافق على أي بند، فيرجى عدم المتابعة في الطلب</div>
 <h4>قوانين الطلب</h4>
 <p>تمر عملية الطلب بعدة مراحل: التواصل الأولي ودراسة الفكرة، ثم إرسال عرض سعر ومخطط زمني، ثم موافقة العميل الكتابية وسداد العربون، وبعدها يبدأ التنفيذ فعليًا. لا يُعتبر الطلب مؤكدًا إلا بعد استكمال هذه الخطوات</p>
@@ -382,26 +385,26 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 
 <div class="box" data-l="en">
 <h4 class="big">Building the Future Through Technology</h4>
-<p>At MCoRe, we believe that technology is more than just writing code — it is about transforming ideas into meaningful digital experiences and creating solutions that make a real difference</p>
+<p>At Mutqin, we believe that technology is more than just writing code — it is about transforming ideas into meaningful digital experiences and creating solutions that make a real difference</p>
 <p>We are a software development company focused on designing, developing, and delivering innovative digital solutions. Our goal is to help individuals, businesses, and organizations turn their visions into reliable, scalable, and well-crafted products that stand out in an ever-evolving digital world</p>
 <p>From modern websites and advanced web applications to custom software and intelligent digital systems, we approach every project with a commitment to quality, precision, and performance. We believe that every detail matters, from the first concept and architecture to the final product and user experience</p>
-<p>What makes MCoRe different is our mindset. We don't simply focus on delivering a finished product; we focus on understanding the purpose behind every project, identifying the right approach, and building solutions that are designed to last. We value clean code, thoughtful design, efficient performance, and continuous improvement</p>
+<p>What makes Mutqin different is our mindset. We don't simply focus on delivering a finished product; we focus on understanding the purpose behind every project, identifying the right approach, and building solutions that are designed to last. We value clean code, thoughtful design, efficient performance, and continuous improvement</p>
 <p>Our vision is to become a trusted name in the software industry by combining creativity, technical expertise, and a forward-thinking approach to development. We constantly explore new technologies, improve our capabilities, and challenge conventional ways of building digital products</p>
-<p>At MCoRe, every project is an opportunity to create something better, solve a meaningful problem, and push technology one step further</p>
+<p>At Mutqin, every project is an opportunity to create something better, solve a meaningful problem, and push technology one step further</p>
 <p class="hl">We don't just build software. We build possibilities</p>
-<p class="hl">MCoRe — Technology Beyond Expectations</p>
+<p class="hl">Mutqin — Technology Beyond Expectations</p>
 </div>
 
 <div class="box" data-l="ar">
 <h4 class="big">بناء المستقبل عبر التكنولوجيا</h4>
-<p>في MCoRe نؤمن بأن التكنولوجيا أكبر من مجرد كتابة كود — إنها تحويل الأفكار إلى تجارب رقمية ذات معنى، وابتكار حلول تُحدث فرقًا حقيقيًا</p>
+<p>في Mutqin نؤمن بأن التكنولوجيا أكبر من مجرد كتابة كود — إنها تحويل الأفكار إلى تجارب رقمية ذات معنى، وابتكار حلول تُحدث فرقًا حقيقيًا</p>
 <p>نحن شركة تطوير برمجيات تركز على تصميم وتطوير وتسليم حلول رقمية مبتكرة. هدفنا مساعدة الأفراد والشركات والمؤسسات على تحويل رؤاهم إلى منتجات موثوقة وقابلة للتوسع ومتقنة الصنع تتميز في عالم رقمي دائم التطور</p>
 <p>من المواقع الحديثة وتطبيقات الويب المتقدمة إلى البرمجيات المخصصة والأنظمة الرقمية الذكية، نتعامل مع كل مشروع بالتزام بالجودة والدقة والأداء. نؤمن بأن كل تفصيلة مهمة، من الفكرة الأولى والبنية التقنية إلى المنتج النهائي وتجربة المستخدم</p>
-<p>ما يميز MCoRe هو طريقة تفكيرنا. لا نكتفي بتسليم منتج جاهز؛ بل نركز على فهم الغاية من كل مشروع، وتحديد النهج المناسب، وبناء حلول مصممة لتدوم. نقدّر الكود النظيف والتصميم المدروس والأداء الكفء والتحسين المستمر</p>
+<p>ما يميز Mutqin هو طريقة تفكيرنا. لا نكتفي بتسليم منتج جاهز؛ بل نركز على فهم الغاية من كل مشروع، وتحديد النهج المناسب، وبناء حلول مصممة لتدوم. نقدّر الكود النظيف والتصميم المدروس والأداء الكفء والتحسين المستمر</p>
 <p>رؤيتنا أن نصبح اسمًا موثوقًا في صناعة البرمجيات عبر الجمع بين الإبداع والخبرة التقنية والنظرة المستقبلية في التطوير. نستكشف باستمرار تقنيات جديدة ونطور قدراتنا ونتحدى الطرق التقليدية في بناء المنتجات الرقمية</p>
-<p>في MCoRe، كل مشروع فرصة لصنع شيء أفضل وحل مشكلة ذات قيمة ودفع التكنولوجيا خطوة إلى الأمام</p>
+<p>في Mutqin، كل مشروع فرصة لصنع شيء أفضل وحل مشكلة ذات قيمة ودفع التكنولوجيا خطوة إلى الأمام</p>
 <p class="hl">نحن لا نبني البرمجيات فقط. نحن نبني الإمكانيات</p>
-<p class="hl">MCoRe — التكنولوجيا فوق التوقعات</p>
+<p class="hl">Mutqin — التكنولوجيا فوق التوقعات</p>
 </div>
 </main>
 
@@ -415,8 +418,8 @@ nav .logo,nav .links,nav .nr .btn{display:none}
   <div><h5><span data-l="en">Legal</span><span data-l="ar">قانوني</span></h5>
     <a href="/en/privacy" data-r="privacy"><span data-l="en">Privacy Policy</span><span data-l="ar">سياسة الخصوصية</span></a>
     <a href="/en/about" data-r="about"><span data-l="en">About Us</span><span data-l="ar">من نحن</span></a></div>
-  <div class="copy"><span><span data-l="en">© 2026 MCoRe. All rights reserved</span><span data-l="ar">© 2026 MCoRe. جميع الحقوق محفوظة</span></span><span><span data-l="en">Full-stack software agency</span><span data-l="ar">وكالة برمجيات متكاملة</span></span></div>
-<div class="word"><span>MCoRe</span><b class="r">®</b></div>
+  <div class="copy"><span><span data-l="en">© 2026 Mutqin. All rights reserved</span><span data-l="ar">© 2026 Mutqin. جميع الحقوق محفوظة</span></span><span><span data-l="en">Full-stack software agency</span><span data-l="ar">وكالة برمجيات متكاملة</span></span></div>
+<div class="word"><span class="m">M</span><span>utqin</span><b class="r">®</b></div>
 </footer>
 </div>
 
@@ -481,8 +484,8 @@ function qSend(){
   if(!okPhone){qphone.focus();return}
   const type=TYPES[qtype.value||0][ar?1:0],note=qmsg.value.trim();
   const text=ar
-   ?['طلب جديد من موقع MCoRe','','الاسم: '+name,'رقم الواتساب: '+phone,'نوع الخدمة: '+type,'تفاصيل المشروع: '+(note||'—')].join('\n')
-   :['New request from the MCoRe website','','Name: '+name,'WhatsApp: '+phone,'Service: '+type,'Project details: '+(note||'—')].join('\n');
+   ?['طلب جديد من موقع Mutqin','','الاسم: '+name,'رقم الواتساب: '+phone,'نوع الخدمة: '+type,'تفاصيل المشروع: '+(note||'—')].join('\n')
+   :['New request from the Mutqin website','','Name: '+name,'WhatsApp: '+phone,'Service: '+type,'Project details: '+(note||'—')].join('\n');
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(text),'_blank','noopener');
   qClose();qname.value=qphone.value=qmsg.value='';qtype.selectedIndex=0;
 }
@@ -494,6 +497,15 @@ qm.addEventListener('click',e=>{if(e.target===qm)qClose()});
 document.getElementById('qsend').addEventListener('click',qSend);
 [qname,qphone].forEach(el=>{el.addEventListener('input',()=>el.classList.remove('bad'));el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();qSend()}})});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&qm.classList.contains('open'))qClose()});
+// brand initial colour: wrap the M of every "Mutqin" in text
+(function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){
+  if(!/Mutqin/.test(n.nodeValue))return NodeFilter.FILTER_REJECT;
+  const t=n.parentNode.nodeName;return /^(SCRIPT|STYLE|TEXTAREA|OPTION)$/.test(t)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
+  const L=[];while(w.nextNode())L.push(w.currentNode);
+  L.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split('Mutqin').forEach((part,i)=>{
+    if(i){const m=document.createElement('span');m.className='m';m.textContent='M';f.appendChild(m);f.appendChild(document.createTextNode('utqin'))}
+    if(part)f.appendChild(document.createTextNode(part))});
+    n.parentNode.replaceChild(f,n)})})();
 // routing: /en , /ar , /en/services , /ar/faq , /en/privacy , /ar/about
 const SEC=['services','clients','faq','contact'],PG=['privacy','about'],ALL=SEC.concat(PG);
 const H=document.documentElement;let lang='en',sec='';
@@ -506,7 +518,7 @@ function read(){
 }
 function render(smooth){
   H.lang=lang;H.dir=lang==='ar'?'rtl':'ltr';
-  document.title=lang==='ar'?'MCoRe — وكالة برمجيات متكاملة':'MCoRe — Full-Stack Software Agency';
+  document.title=lang==='ar'?'Mutqin — وكالة برمجيات متكاملة':'Mutqin — Full-Stack Software Agency';
   document.querySelectorAll('[data-r]').forEach(a=>a.href='/'+lang+(a.dataset.r?'/'+a.dataset.r:''));
   const pg=PG.includes(sec)?sec:'home';
   ['home','privacy','about'].forEach(i=>document.getElementById(i).hidden=i!==pg);
