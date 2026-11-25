@@ -111,6 +111,9 @@ footer .fl .btn:hover{color:#fff;border-color:#555}
 footer h5{font-weight:400;color:var(--mut);margin-bottom:16px}
 footer a{display:block;color:#fff;font-size:15px;margin-bottom:14px}footer a:hover{color:var(--a1)}
 footer a .thin{font-weight:200;color:var(--mut);margin-inline-start:8px;font-size:14px}
+/* clickable contact links (email + WhatsApp) */
+footer a[href^="mailto"],footer a[href*="wa.me"],.box .top a[href^="mailto"],.box .top a[href*="wa.me"]{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:4px;transition:color .25s,text-decoration-color .25s}
+footer a[href^="mailto"]:hover,footer a[href*="wa.me"]:hover,.box .top a[href^="mailto"]:hover,.box .top a[href*="wa.me"]:hover{color:var(--a1);text-decoration-color:var(--a1)}
 .copy{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--mut);font-size:14px;border-top:1px solid #222;padding-top:24px;margin-top:20px}
 /* inner pages */
 .pg{max-width:900px;margin:0 auto;padding:150px 20px 20px}
@@ -289,7 +292,7 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 
 <div class="box" data-l="en">
 <div class="top">
-<div><h5>Contact</h5><a href="https://wa.me/201210356435"><bdi>WhatsApp: 01210356435</bdi></a><a href="mailto:mutqinx@gmail.com">mutqinx@gmail.com</a></div>
+<div><h5>Contact</h5><a href="https://wa.me/201210356435" target="_blank" rel="noopener"><bdi>WhatsApp: 01210356435</bdi></a><a href="mailto:mutqinx@gmail.com">mutqinx@gmail.com</a></div>
 <div><h5>Follow us</h5><a href="https://instagram.com/your_username">Instagram</a></div>
 <div><h5>Last updated</h5><span>November 2026</span></div>
 </div>
@@ -334,7 +337,7 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 
 <div class="box" data-l="ar">
 <div class="top">
-<div><h5>للتواصل</h5><a href="https://wa.me/201210356435"><bdi>واتساب: 01210356435</bdi></a><a href="mailto:mcoredigital1@gmail.com">mcoredigital1@gmail.com</a></div>
+<div><h5>للتواصل</h5><a href="https://wa.me/201210356435" target="_blank" rel="noopener"><bdi>واتساب: 01210356435</bdi></a><a href="mailto:mutqinx@gmail.com">mutqinx@gmail.com</a></div>
 <div><h5>تابعنا</h5><a href="https://instagram.com/your_username">Instagram</a></div>
 <div><h5>آخر تحديث</h5><span>نوفمبر 2026</span></div>
 </div>
@@ -411,8 +414,8 @@ nav .logo,nav .links,nav .nr .btn{display:none}
 <footer>
   <div class="fl"><h2><span data-l="en">Let’s build <em>something</em> great</span><span data-l="ar">لنبنِ <em>شيئًا</em> رائعًا</span></h2><a class="btn" href="#" data-quote data-mag><span data-l="en">Get a free quote ↗</span><span data-l="ar">احصل على عرض سعر مجاني ↗</span></a></div>
   <div><h5><span data-l="en">Contact us</span><span data-l="ar">تواصل معنا</span></h5>
-    <a href="https://wa.me/201210356435"><span data-l="en">WhatsApp: <bdi>01210356435</bdi></span><span data-l="ar">واتساب: <bdi>01210356435</bdi></span></a>
-    <a href="mailto:mcoredigital1@gmail.com">mcoredigital1@gmail.com</a>
+    <a href="https://wa.me/201210356435" target="_blank" rel="noopener"><span data-l="en">WhatsApp: <bdi>01210356435</bdi></span><span data-l="ar">واتساب: <bdi>01210356435</bdi></span></a>
+    <a href="mailto:mutqinx@gmail.com">mutqinx@gmail.com</a>
     <a href="#" data-quote><span data-l="en">Get a free quote</span><span data-l="ar">احصل على عرض سعر</span></a></div>
   <div><h5><span data-l="en">Follow</span><span data-l="ar">تابعنا</span></h5><a href="https://instagram.com/your_username">Instagram</a></div>
   <div><h5><span data-l="en">Legal</span><span data-l="ar">قانوني</span></h5>
